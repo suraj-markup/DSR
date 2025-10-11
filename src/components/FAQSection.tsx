@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { CircleQuestionMark, FileQuestion, Plus, ShieldQuestionIcon } from 'lucide-react';
+import { Plus, ShieldQuestionIcon } from 'lucide-react';
 import { useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 
