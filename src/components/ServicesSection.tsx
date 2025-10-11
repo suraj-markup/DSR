@@ -103,7 +103,7 @@ const ServicesSection = () => {
     },
   };
 
-  const ServiceCard = ({ service, index }: { service: typeof services[0], index: number }) => {
+    const ServiceCard = ({ service }: { service: typeof services[0] }) => {
     const Icon = service.icon;
     
     return (
@@ -237,8 +237,8 @@ const ServicesSection = () => {
 
           {/* Bento Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[200px]">
-            {services.map((service, index) => (
-              <ServiceCard key={service.id} service={service} index={index} />
+            {services.map((service) => (
+              <ServiceCard key={service.id} service={service} />
             ))}
           </div>
 
