@@ -88,7 +88,7 @@ const HeroSection = () => {
             >
               Seamless Moving,
               <br />
-              <span className="bg-gradient-to-r from-primary via-accent to-orange-500 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-orange-200 via-accent to-orange-500 bg-clip-text text-transparent">
                 Stress-Free Solutions
               </span>
             </motion.h1>
