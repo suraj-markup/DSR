@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { Plus } from 'lucide-react';
+import { CircleQuestionMark, FileQuestion, Plus, ShieldQuestionIcon } from 'lucide-react';
 import { useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 
@@ -49,7 +49,9 @@ const FAQAccordionItem = ({ faq, isOpen, onToggle }: { faq: FAQItem; isOpen: boo
         onClick={onToggle}
         className="w-full py-6 flex items-center justify-between text-left group hover:opacity-70 transition-opacity duration-200"
       >
-        <span className="text-lg md:text-xl font-normal text-gray-900 pr-8">
+        <span className={`text-lg md:text-xl font-normal pr-8 transition-colors duration-200 ${
+          isOpen ? 'text-orange-600' : 'text-gray-900'
+        }`}>
           {faq.question}
         </span>
         <motion.div
@@ -57,7 +59,9 @@ const FAQAccordionItem = ({ faq, isOpen, onToggle }: { faq: FAQItem; isOpen: boo
           transition={{ duration: 0.3, ease: 'easeInOut' }}
           className="flex-shrink-0"
         >
-          <Plus className="w-6 h-6 text-gray-900" strokeWidth={1.5} />
+          <Plus className={`w-6 h-6 transition-colors duration-200 ${
+            isOpen ? 'text-orange-600' : 'text-gray-900'
+          }`} strokeWidth={1.5} />
         </motion.div>
       </button>
 
@@ -70,7 +74,7 @@ const FAQAccordionItem = ({ faq, isOpen, onToggle }: { faq: FAQItem; isOpen: boo
             transition={{ duration: 0.3, ease: 'easeInOut' }}
             className="overflow-hidden"
           >
-            <div className="pb-6 pr-12">
+            <div className="pb-6 pl-4 pr-2">
               <p className="text-base text-gray-600 leading-relaxed">
                 {faq.answer}
               </p>
@@ -105,11 +109,12 @@ const FAQSection = () => {
             initial={{ opacity: 0, x: -30 }}
             animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
             transition={{ duration: 0.6 }}
-            className="lg:sticky lg:top-32"
+            className="lg:sticky lg:top-4"
           >
             {/* Badge */}
-            <div className="inline-flex items-center px-4 py-2 bg-gray-100 rounded-full text-sm text-gray-700 font-medium mb-6">
-              FAQs
+            <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-accent/10 to-orange-100 rounded-full text-sm text-gray-700 font-medium mb-6">
+            <ShieldQuestionIcon className="w-4 h-4 " /> 
+             <span className='ml-1'> FAQs</span>
             </div>
 
             {/* Main Heading */}

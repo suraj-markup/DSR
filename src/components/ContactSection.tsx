@@ -102,7 +102,7 @@ const ContactSection = () => {
             {/* Header Section */}
             <div>
               {/* Badge */}
-              <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-primary to-accent rounded-full text-sm font-semibold mb-6 shadow-lg">
+              <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-accent/10 to-orange-100 rounded-full text-sm font-semibold mb-6 shadow-lg">
                 <Send className="w-4 h-4" />
                 Get In Touch 
               </div>
@@ -138,9 +138,9 @@ const ContactSection = () => {
                     >
                       {/* Isometric Icon Background */}
                       <div className="relative w-16 h-16 flex-shrink-0">
-                        <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 rounded-2xl transform rotate-6"></div>
-                        <div className="absolute inset-0 bg-gradient-to-br from-primary to-accent rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                          <item.icon className="w-7 h-7 text-white" />
+                        <div className="absolute inset-0 bg-gradient-to-br from-primary to-accent rounded-2xl transform rotate-6"></div>
+                        <div className="absolute inset-0 bg-gradient-to-br from-primary to-accent rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                          <item.icon className="w-7 h-7 text-orange-400 drop-shadow-sm" />
                         </div>
                       </div>
                       <div className="flex-1">
@@ -152,9 +152,9 @@ const ContactSection = () => {
                     <div className="flex items-center gap-4 bg-white rounded-2xl p-6 border-2 border-gray-100">
                       {/* Isometric Icon Background */}
                       <div className="relative w-16 h-16 flex-shrink-0">
-                        <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 rounded-2xl transform rotate-6"></div>
-                        <div className="absolute inset-0 bg-gradient-to-br from-primary to-accent rounded-2xl flex items-center justify-center">
-                          <item.icon className="w-7 h-7 text-white" />
+                        <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-accent/30 rounded-2xl transform rotate-6"></div>
+                        <div className="absolute inset-0 bg-gradient-to-br from-primary to-accent rounded-2xl flex items-center justify-center shadow-lg">
+                          <item.icon className="w-7 h-7 text-orange-400 drop-shadow-sm" />
                         </div>
                       </div>
                       <div className="flex-1">
@@ -173,7 +173,7 @@ const ContactSection = () => {
                 href="tel:+15551234567"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-6 py-3 bg-white text-gray-900 border-2 rounded-full font-semibold transition-all duration-300 flex items-center gap-2"
+                className="px-6 py-3 bg-white text-gray-900 border-2 border-orange-300 text-orange-400 hover:text-orange-600 hover:border-orange-500  rounded-full font-semibold transition-all duration-300 flex items-center gap-2"
               >
                 <Phone className="w-5 h-5" />
                 Call Us Now
@@ -182,7 +182,7 @@ const ContactSection = () => {
                 href="mailto:info@dsrlogistics.com"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-6 py-3 bg-white text-gray-900 border-2 rounded-full font-semibold transition-all duration-300 flex items-center gap-2"
+                className="px-6 py-3 bg-white border-2 border-orange-300 text-orange-400 hover:text-orange-600 hover:border-orange-500 rounded-full font-semibold transition-all duration-300 flex items-center gap-2"
               >
                 <Mail className="w-5 h-5" />
                 Send Email
@@ -313,7 +313,7 @@ const ContactSection = () => {
                   disabled={isSubmitting}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="w-full bg-gradient-to-r from-primary to-accent py-4 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center border-2 border-gray-200 justify-center gap-3"
+                  className="w-full bg-gradient-to-r from-primary to-accent py-4 border-orange-300 text-orange-400 hover:text-orange-600 hover:border-orange-500  rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center border-2 justify-center gap-3"
                 >
                   {isSubmitting ? (
                     <>

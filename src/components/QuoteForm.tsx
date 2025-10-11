@@ -10,7 +10,7 @@ const QuoteForm = () => {
       className="relative z-20 -mt-20 mb-20"
     >
       {/* Floating Form Card */}
-      <div className="bg-white rounded-2xl shadow-2xl border border-gray-100 px-8 py-8 max-w-7xl">
+      <div className="bg-white rounded-2xl shadow-2xl border border-gray-100 px-8 py-8 max-w-7xl mx-auto">
         {/* Main Form Row - Compact One Line */}
         <div className="flex flex-col xl:flex-row gap-4 items-center justify-center max-w-7xl mx-auto">
           {/* From Location */}

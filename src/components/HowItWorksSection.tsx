@@ -93,17 +93,6 @@ const HowItWorksSection = () => {
     },
   };
 
-  const stepVariants = {
-    hidden: { opacity: 0, scale: 0.8 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: {
-        duration: 0.6,
-        ease: 'easeOut' as const,
-      },
-    },
-  };
 
   return (
     <section id="how-it-works" className="py-20 bg-white">
@@ -117,9 +106,9 @@ const HowItWorksSection = () => {
         >
           {/* Section Header */}
           <div className="text-center mb-16">
-            <motion.div
+          <motion.div
               variants={itemVariants}
-              className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-full text-primary font-medium text-sm mb-6"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-accent/10 to-orange-100 rounded-full text-accent font-medium text-sm mb-6"
             >
               <CheckCircle className="w-4 h-4" />
               Simple Process
@@ -134,73 +123,96 @@ const HowItWorksSection = () => {
             
             <motion.p
               variants={itemVariants}
-              className="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed"
+              className="text-xl text-gray-700 mx-auto px-32"
             >
               Our streamlined process ensures your move is stress-free from start to finish. 
               We handle all the details so you can focus on what matters most.
             </motion.p>
           </div>
 
-          {/* Steps Timeline */}
+          {/* Simple Timeline */}
           <div className="relative mb-16">
-            {/* Connection Line - Desktop */}
-            <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-primary via-secondary to-accent transform -translate-y-1/2 z-0" />
-            
-            {/* Steps Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 relative z-10">
+            {/* Desktop Timeline */}
+            <div className="hidden lg:block">
+              <div className="relative flex items-center justify-between px-8 py-12">
+                {/* Connecting Line - positioned behind content */}
+                <div className="absolute top-24 left-20 right-20 h-0.5 bg-gray-300 transform -translate-y-1/2 z-0" />
+                
+                {/* Timeline Steps */}
+                {steps.map((step, index) => {
+                  const Icon = step.icon;
+                  
+                  return (
+                    <motion.div
+                      key={step.id}
+                      className="flex flex-col items-center text-center max-w-xs relative z-10"
+                      initial={{ opacity: 0, y: 30 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.6, delay: index * 0.2 }}
+                    >
+                      {/* Step Number Circle */}
+                      <div className="relative z-20 flex items-center justify-center w-16 h-16 rounded-full mb-6 border-2 border-gray-600 bg-white">
+                        <span className="text-xl font-bold text-gray-600">
+                          {index + 1}
+                        </span>
+                        
+                        {/* Icon overlay */}
+                        <div className="absolute -top-1 -right-1 w-6 h-6 bg-white rounded-full border border-gray-300 flex items-center justify-center">
+                          <Icon className="w-3 h-3 text-gray-500" />
+                        </div>
+                      </div>
+
+                      {/* Step Content */}
+                      <div className="bg-white relative z-10 px-2">
+                        <h3 className="font-display font-bold text-xl mb-3 text-gray-900">
+                          {step.title}
+                        </h3>
+                        
+                        <p className="text-gray-600 leading-relaxed">
+                          {step.description}
+                        </p>
+                      </div>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Mobile Timeline */}
+            <div className="lg:hidden space-y-8">
               {steps.map((step, index) => {
                 const Icon = step.icon;
                 
                 return (
                   <motion.div
                     key={step.id}
-                    variants={stepVariants}
-                    className="relative"
+                    className="flex items-start gap-6"
+                    initial={{ opacity: 0, x: -30 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.6, delay: index * 0.2 }}
                   >
-                    {/* Step Card */}
-                    <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200">
-                      {/* Step Number */}
-                      <div className={`
-                        inline-flex items-center justify-center w-16 h-16 rounded-full mb-6
-                        bg-gradient-to-r ${step.color} text-white font-display font-bold text-xl
-                      `}>
-                        {step.number}
+                    {/* Step Number Circle */}
+                    <div className="flex-shrink-0 flex items-center justify-center w-12 h-12 rounded-full border-2 border-gray-600 bg-white relative">
+                      <span className="text-lg font-bold text-gray-600">
+                        {index + 1}
+                      </span>
+                      
+                      {/* Icon overlay */}
+                      <div className="absolute -top-1 -right-1 w-5 h-5 bg-white rounded-full border border-gray-300 flex items-center justify-center">
+                        <Icon className="w-2.5 h-2.5 text-gray-500" />
                       </div>
+                    </div>
 
-                      {/* Icon */}
-                      <div className={`
-                        inline-flex items-center justify-center w-12 h-12 rounded-xl mb-4
-                        ${step.iconBg}
-                      `}>
-                        <Icon className={`w-6 h-6 ${step.iconColor}`} />
-                      </div>
-
-                      {/* Content */}
-                      <h3 className="font-display font-semibold text-xl text-gray-900 mb-3">
+                    {/* Step Content */}
+                    <div className="flex-1">
+                      <h3 className="font-display font-bold text-lg mb-2 text-gray-900">
                         {step.title}
                       </h3>
                       
-                      <p className="text-gray-700 mb-6 leading-relaxed">
+                      <p className="text-gray-600 leading-relaxed">
                         {step.description}
                       </p>
-
-                      {/* Details List */}
-                      <ul className="space-y-2">
-                        {step.details.map((detail, idx) => (
-                          <li key={idx} className="flex items-center gap-2 text-sm text-gray-700">
-                            <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${step.color}`} />
-                            {detail}
-                          </li>
-                        ))}
-                      </ul>
                     </div>
-
-                    {/* Connection Arrow - Mobile */}
-                    {index < steps.length - 1 && (
-                      <div className="lg:hidden flex justify-center mt-6">
-                        <ArrowRight className="w-6 h-6 text-gray-400" />
-                      </div>
-                    )}
                   </motion.div>
                 );
               })}
@@ -233,25 +245,6 @@ const HowItWorksSection = () => {
                 </motion.div>
               );
             })}
-          </motion.div>
-
-          {/* Bottom CTA */}
-          <motion.div
-            variants={itemVariants}
-            className="text-center"
-          >
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-accent to-orange-500 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-200 group"
-            >
-              <span>Start Your Move Today</span>
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
-            </motion.button>
-            
-            <p className="text-sm text-gray-500 mt-4">
-              Free consultation • No obligation • Get started in minutes
-            </p>
           </motion.div>
         </motion.div>
       </div>

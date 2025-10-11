@@ -1,15 +1,16 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { 
-  Home, 
-  Building2, 
-  Warehouse, 
-  Globe, 
-  Package, 
-  Truck,
-  ArrowRight,
   CheckCircle
 } from 'lucide-react';
+
+// Import service videos
+import residentialVideo from '../assets/service/Residential Moving mp4.mp4';
+import commercialVideo from '../assets/service/Commercial Relocation.mp4';
+import storageVideo from '../assets/service/Logistics.mp4';
+import internationalVideo from '../assets/service/International.mp4';
+import packingVideo from '../assets/service/packig service.mp4';
+import vehicleVideo from '../assets/service/vehicle transport.mp4';
 
 const ServicesSection = () => {
   const [ref, inView] = useInView({
@@ -22,61 +23,61 @@ const ServicesSection = () => {
       id: 1,
       title: 'Residential Moving',
       description: 'Complete home relocation services with professional packing, loading, and delivery.',
-      icon: Home,
-      featured: true,
+      video: residentialVideo,
       features: ['Professional Packing', 'Furniture Protection', 'Insurance Coverage'],
-      color: 'from-blue-500 to-blue-600',
+      bgColor: 'bg-blue-500',
       iconColor: 'text-blue-500',
+      iconBg: 'bg-blue-100',
     },
     {
       id: 2,
       title: 'Commercial Relocation',
       description: 'Office and business moving solutions with minimal downtime.',
-      icon: Building2,
-      featured: false,
+      video: commercialVideo,
       features: ['Business Hours Moving', 'IT Equipment Handling', 'Document Security'],
-      color: 'from-green-500 to-green-600',
+      bgColor: 'bg-green-500',
       iconColor: 'text-green-500',
+      iconBg: 'bg-green-100',
     },
     {
       id: 3,
       title: 'Storage Solutions',
       description: 'Secure, climate-controlled storage facilities for your belongings.',
-      icon: Warehouse,
-      featured: false,
+      video: storageVideo,
       features: ['Climate Controlled', '24/7 Security', 'Easy Access'],
-      color: 'from-purple-500 to-purple-600',
+      bgColor: 'bg-purple-500',
       iconColor: 'text-purple-500',
+      iconBg: 'bg-purple-100',
     },
     {
       id: 4,
       title: 'International Shipping',
       description: 'Global logistics and customs clearance for international moves.',
-      icon: Globe,
-      featured: false,
+      video: internationalVideo,
       features: ['Customs Clearance', 'Documentation', 'Global Network'],
-      color: 'from-orange-500 to-orange-600',
+      bgColor: 'bg-orange-500',
       iconColor: 'text-orange-500',
+      iconBg: 'bg-orange-100',
     },
     {
       id: 5,
       title: 'Packing Services',
       description: 'Professional packing with premium materials and expert techniques.',
-      icon: Package,
-      featured: false,
+      video: packingVideo,
       features: ['Premium Materials', 'Expert Techniques', 'Labeled Boxes'],
-      color: 'from-pink-500 to-pink-600',
+      bgColor: 'bg-pink-500',
       iconColor: 'text-pink-500',
+      iconBg: 'bg-pink-100',
     },
     {
       id: 6,
       title: 'Vehicle Transport',
       description: 'Safe and reliable car, motorcycle, and boat transportation.',
-      icon: Truck,
-      featured: false,
+      video: vehicleVideo,
       features: ['Enclosed Transport', 'Insurance Coverage', 'Door-to-Door'],
-      color: 'from-indigo-500 to-indigo-600',
+      bgColor: 'bg-indigo-500',
       iconColor: 'text-indigo-500',
+      iconBg: 'bg-indigo-100',
     },
   ];
 
@@ -104,104 +105,62 @@ const ServicesSection = () => {
   };
 
     const ServiceCard = ({ service }: { service: typeof services[0] }) => {
-    const Icon = service.icon;
-    
     return (
       <motion.div
         variants={itemVariants}
         whileHover={{ 
-          scale: service.featured ? 1.02 : 1.05,
-          y: -10,
+          scale: 1.02,
+          y: -5,
           transition: { duration: 0.3 }
         }}
-        className={`
-          group relative overflow-hidden rounded-2xl p-6 cursor-pointer
-          ${service.featured 
-            ? 'col-span-2 row-span-2 bg-gradient-to-br from-primary to-secondary text-white' 
-            : 'bg-white border border-gray-200 hover:border-gray-300'
-          }
-          shadow-lg hover:shadow-2xl transition-all duration-300
-        `}
+        className="group relative overflow-hidden rounded-2xl p-6 cursor-pointer bg-white border-2 border-gray-200 hover:border-accent/50 shadow-lg hover:shadow-2xl transition-all duration-300"
       >
-        {/* Background Gradient Overlay */}
-        <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`} />
-        
         {/* Content */}
-        <div className="relative z-10">
-          {/* Icon */}
-          <div className={`
-            inline-flex items-center justify-center w-12 h-12 rounded-xl mb-4
-            ${service.featured 
-              ? 'bg-white/20' 
-              : `bg-gradient-to-br ${service.color}`
-            }
-          `}>
-            <Icon className="w-6 h-6 text-white" />
+        <div className="relative z-10 flex flex-col h-full">
+          {/* Large Video Section */}
+          <div className="w-full h-64 rounded-xl overflow-hidden mb-6 bg-gray-100">
+            <video
+              autoPlay
+              muted
+              playsInline
+              className="w-full h-full object-cover"
+            >
+              <source src={service.video} type="video/mp4" />
+            </video>
           </div>
 
           {/* Title */}
-          <h3 className={`
-            font-display font-semibold mb-3
-            ${service.featured ? 'text-2xl text-white' : 'text-xl text-gray-900'}
-          `}>
+          <h3 className="font-display font-bold text-xl text-gray-900 mb-3">
             {service.title}
           </h3>
 
           {/* Description */}
-          <p className={`
-            mb-4 leading-relaxed
-            ${service.featured 
-              ? 'text-white/90 text-lg' 
-              : 'text-gray-700'}
-          `}>
+          <p className="text-gray-600 text-base mb-6 leading-relaxed">
             {service.description}
           </p>
 
           {/* Features List */}
-          <ul className="space-y-2 mb-6">
+          <ul className="space-y-3">
             {service.features.map((feature, idx) => (
-              <li key={idx} className="flex items-center gap-2 text-sm">
-                <CheckCircle className={`
-                  w-4 h-4 flex-shrink-0
-                  ${service.featured ? 'text-white/80' : service.iconColor}
-                `} />
-                <span className={service.featured ? 'text-white/90' : 'text-gray-700'}>
+              <li key={idx} className="flex items-center gap-3">
+                <CheckCircle className={`w-5 h-5 flex-shrink-0 ${service.iconColor}`} />
+                <span className="text-sm font-medium text-gray-700">
                   {feature}
                 </span>
               </li>
             ))}
           </ul>
-
-          {/* CTA */}
-          <motion.button
-            whileHover={{ x: 5 }}
-            className={`
-              inline-flex items-center gap-2 font-medium transition-all duration-200
-              ${service.featured 
-                ? 'text-white hover:text-white/80' 
-                : 'text-primary hover:text-accent'
-              }
-            `}
-          >
-            Learn More
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
-          </motion.button>
         </div>
 
-        {/* Decorative Elements */}
-        <div className="absolute top-4 right-4 opacity-10">
-          <div className={`
-            w-20 h-20 rounded-full
-            ${service.featured ? 'bg-white' : `bg-gradient-to-br ${service.color}`}
-          `} />
-        </div>
+        {/* Decorative blur element */}
+        <div className={`absolute -bottom-6 -right-6 w-32 h-32 rounded-full ${service.bgColor} opacity-5 blur-2xl pointer-events-none`} />
       </motion.div>
     );
   };
 
   return (
-    <section id="services" className="py-20 bg-white">
-      <div className="container mx-auto px-4">
+    <section id="services" className="py-20 bg-gradient-to-b from-gray-50 to-white">
+      <div className="mx-auto px-4">
         <motion.div
           ref={ref}
           variants={containerVariants}
@@ -215,7 +174,7 @@ const ServicesSection = () => {
               variants={itemVariants}
               className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-accent/10 to-orange-100 rounded-full text-accent font-medium text-sm mb-6"
             >
-              <Package className="w-4 h-4" />
+              <CheckCircle className="w-4 h-4" />
               What We Offer
             </motion.div>
             
@@ -228,38 +187,21 @@ const ServicesSection = () => {
             
             <motion.p
               variants={itemVariants}
-              className="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed"
+              className="text-xl text-gray-700 mx-auto leading-relaxed px-32"
             >
               From residential moves to international shipping, we provide comprehensive logistics solutions 
               tailored to your specific needs with professional expertise and modern technology.
             </motion.p>
           </div>
 
-          {/* Bento Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[200px]">
+          {/* Services Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service) => (
               <ServiceCard key={service.id} service={service} />
             ))}
           </div>
 
-          {/* Bottom CTA */}
-          <motion.div
-            variants={itemVariants}
-            className="text-center mt-16"
-          >
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-accent to-orange-500 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-200 group"
-            >
-              <span>Get Custom Quote</span>
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
-            </motion.button>
-            
-            <p className="text-sm text-gray-500 mt-4">
-              Free consultation • No hidden fees • 24/7 support
-            </p>
-          </motion.div>
+      
         </motion.div>
       </div>
     </section>

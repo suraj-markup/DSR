@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Star } from 'lucide-react';
+import { CheckCircle, ChevronLeft, ChevronRight, Star } from 'lucide-react';
 import { useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 
@@ -166,14 +166,20 @@ const TestimonialsSection = () => {
           className="text-center mb-16"
         >
           {/* Badge */}
-          <div className="inline-flex items-center px-4 py-2 bg-gray-100 rounded-full text-sm text-gray-700 font-medium mb-6">
-            Our Wall of Love
-          </div>
+          <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-accent/10 to-orange-100 rounded-full text-accent font-medium text-sm mb-6"
+            >
+              <CheckCircle className="w-4 h-4" />
+              Our Wall of Love
+            </motion.div>
 
           {/* Main Heading */}
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
             <span className="text-gray-900">How Teams Like Yours </span>
-            <span className="text-gray-400">Move Smarter</span>
+            <span className="text-orange-300">Move Smarter</span>
           </h2>
         </motion.div>
 
