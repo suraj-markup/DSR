@@ -2,6 +2,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Plus, ShieldQuestionIcon } from 'lucide-react';
 import { useState } from 'react';
 import { useInView } from 'react-intersection-observer';
+import oneImage from '../assets/one.webp';
 
 interface FAQItem {
   id: number;
@@ -109,7 +110,7 @@ const FAQSection = () => {
             initial={{ opacity: 0, x: -30 }}
             animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
             transition={{ duration: 0.6 }}
-            className="lg:sticky lg:top-4"
+            className="lg:sticky lg:top-1"
           >
             {/* Badge */}
             <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-accent/10 to-orange-100 rounded-full text-sm text-gray-700 font-medium mb-6">
@@ -118,9 +119,23 @@ const FAQSection = () => {
             </div>
 
             {/* Main Heading */}
-            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
+            <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 leading-tight mb-4">
               Frequently Asked Questions.
             </h2>
+
+            {/* Image */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="relative"
+            >
+              <img
+                src={oneImage}
+                alt="FAQ Illustration"
+                className="w-full max-w-md rounded-2xl shadow-lg"
+              />
+            </motion.div>
           </motion.div>
 
           {/* Right Column - FAQ Accordion */}
@@ -128,7 +143,7 @@ const FAQSection = () => {
             initial={{ opacity: 0, x: 30 }}
             animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="space-y-0"
+            className="space-y-0 mt-10"
           >
             {faqs.map((faq, index) => (
               <motion.div
