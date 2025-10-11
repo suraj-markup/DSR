@@ -173,7 +173,7 @@ const ContactSection = () => {
                 href="tel:+15551234567"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-6 py-3 bg-white text-gray-900 border-2 border-orange-300 text-orange-400 hover:text-orange-600 hover:border-orange-500  rounded-full font-semibold transition-all duration-300 flex items-center gap-2"
+                className="px-6 py-3 bg-white border-2 border-orange-300 text-orange-400 hover:text-orange-600 hover:border-orange-500  rounded-full font-semibold transition-all duration-300 flex items-center gap-2"
               >
                 <Phone className="w-5 h-5" />
                 Call Us Now
