@@ -1,24 +1,11 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
-import logoImage from '../assets/logo.jpeg';
+import logoImage from '../assets/logo.png';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { scrollY } = useScroll();
-  
-  // Transform scroll progress into background opacity
-  const backgroundColor = useTransform(
-    scrollY,
-    [0, 100],
-    ['rgba(255,255,255,0)', 'rgba(255,255,255,0.95)']
-  );
-  
-  const backdropFilter = useTransform(
-    scrollY,
-    [0, 100],
-    ['blur(0px)', 'blur(12px)']
-  );
 
   // Close mobile menu when clicking outside
   useEffect(() => {
@@ -68,11 +55,7 @@ const Header = () => {
 
       {/* Header */}
       <motion.header
-        className="fixed top-0 left-0 right-0 z-40 transition-all duration-300"
-        style={{
-          backgroundColor,
-          backdropFilter,
-        }}
+        className="fixed top-0 left-0 right-0 z-40 bg-white shadow-md transition-all duration-300"
       >
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16 lg:h-20">

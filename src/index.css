@@ -95,8 +95,6 @@ p {
 button {
   font-family: inherit;
   cursor: pointer;
-  border: none;
-  outline: none;
   transition: var(--transition-fast);
 }
 
