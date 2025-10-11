@@ -4,7 +4,6 @@ import {
   MessageSquare, 
   Calendar, 
   CheckCircle,
-  ArrowRight,
   Clock,
   Shield,
   Truck
