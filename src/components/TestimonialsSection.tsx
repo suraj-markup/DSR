@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { CheckCircle, ChevronLeft, ChevronRight, Star } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 
 interface Testimonial {
@@ -83,11 +83,11 @@ const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => {
       initial={{ opacity: 0, scale: 0.9 }}
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.9 }}
-      className="flex-shrink-0 w-[320px] md:w-[360px] h-[480px] md:h-[500px]"
+      className="flex-shrink-0 w-[280px] sm:w-[320px] md:w-[360px] h-[420px] sm:h-[480px] md:h-[500px]"
     >
-      <div className="relative h-full bg-white rounded-2xl border-2 border-gray-200 overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group">
+      <div className="relative h-full bg-white rounded-xl md:rounded-2xl border-2 border-gray-200 overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group">
         {/* Customer Photo */}
-        <div className="relative h-[280px] md:h-[300px] overflow-hidden">
+        <div className="relative h-[240px] sm:h-[260px] md:h-[300px] overflow-hidden">
           <img
             src={testimonial.image}
             alt={testimonial.name}
@@ -100,31 +100,31 @@ const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => {
         </div>
 
         {/* Content */}
-        <div className="p-6 flex flex-col justify-between h-[200px]">
+        <div className="p-4 sm:p-6 flex flex-col justify-between h-[180px] sm:h-[200px]">
           {/* Rating */}
-          <div className="flex items-center gap-2 mb-3">
+          <div className="flex items-center gap-2 mb-2 sm:mb-3">
             <div className="flex">
               {[...Array(5)].map((_, i) => (
                 <Star
                   key={i}
-                  className="w-4 h-4 fill-yellow-400 text-yellow-400"
+                  className="w-3 h-3 sm:w-4 sm:h-4 fill-yellow-400 text-yellow-400"
                 />
               ))}
             </div>
-            <span className="text-sm font-semibold text-gray-700">
+            <span className="text-xs sm:text-sm font-semibold text-gray-700">
               {testimonial.rating}
             </span>
           </div>
 
           {/* Quote */}
-          <p className="text-gray-700 text-sm md:text-base leading-relaxed mb-4 line-clamp-3">
+          <p className="text-gray-700 text-xs sm:text-sm md:text-base leading-relaxed mb-3 sm:mb-4 line-clamp-3">
             {testimonial.quote}
           </p>
 
           {/* Customer Info */}
           <div className="mt-auto">
-            <p className="font-semibold text-gray-900">{testimonial.name}</p>
-            <p className="text-sm text-gray-600">
+            <p className="font-semibold text-sm sm:text-base text-gray-900">{testimonial.name}</p>
+            <p className="text-xs sm:text-sm text-gray-600">
               {testimonial.title}, {testimonial.company}
             </p>
           </div>
@@ -141,8 +141,26 @@ const TestimonialsSection = () => {
     triggerOnce: true,
   });
 
-  const cardsPerView = 3; // Number of cards visible at once
+  // Responsive cards per view
+  const [cardsPerView, setCardsPerView] = useState(3);
   const maxIndex = testimonials.length - cardsPerView;
+
+  // Update cards per view based on screen size
+  useEffect(() => {
+    const updateCardsPerView = () => {
+      if (window.innerWidth < 640) {
+        setCardsPerView(1); // Mobile: 1 card
+      } else if (window.innerWidth < 1024) {
+        setCardsPerView(2); // Tablet: 2 cards
+      } else {
+        setCardsPerView(3); // Desktop: 3 cards
+      }
+    };
+
+    updateCardsPerView();
+    window.addEventListener('resize', updateCardsPerView);
+    return () => window.removeEventListener('resize', updateCardsPerView);
+  }, []);
 
   const handlePrev = () => {
     setCurrentIndex((prev) => Math.max(0, prev - 1));
@@ -155,7 +173,7 @@ const TestimonialsSection = () => {
   return (
     <section
       ref={ref}
-      className="relative py-20 md:py-28 bg-gradient-to-b from-white to-gray-50 overflow-hidden"
+      className="relative py-16 md:py-20 lg:py-28 bg-gradient-to-b from-white to-gray-50 overflow-hidden"
     >
       <div className="container mx-auto px-4">
         {/* Header */}
@@ -163,21 +181,21 @@ const TestimonialsSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-12 md:mb-16"
         >
           {/* Badge */}
           <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-accent/10 to-orange-100 rounded-full text-accent font-medium text-sm mb-6"
+              className="inline-flex items-center gap-2 px-3 py-2 sm:px-4 sm:py-2 bg-gradient-to-r from-accent/10 to-orange-100 rounded-full text-accent font-medium text-xs sm:text-sm mb-4 sm:mb-6"
             >
               <CheckCircle className="w-4 h-4" />
               Our Wall of Love
             </motion.div>
 
           {/* Main Heading */}
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-3 md:mb-4">
             <span className="text-gray-900">How Teams Like Yours </span>
             <span className="text-orange-300">Move Smarter</span>
           </h2>
@@ -193,9 +211,9 @@ const TestimonialsSection = () => {
             className="overflow-hidden"
           >
             <motion.div
-              className="flex gap-6 transition-transform duration-500 ease-out"
+              className="flex gap-4 sm:gap-6 transition-transform duration-500 ease-out"
               animate={{
-                x: `-${currentIndex * (360 + 24)}px`, // card width + gap
+                x: `-${currentIndex * (cardsPerView === 1 ? 280 : cardsPerView === 2 ? 320 : 360) + (cardsPerView === 1 ? 16 : cardsPerView === 2 ? 24 : 24)}px`,
               }}
               transition={{ duration: 0.5, ease: 'easeInOut' }}
             >
@@ -213,7 +231,7 @@ const TestimonialsSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex items-center justify-center gap-4 mt-12"
+            className="flex items-center justify-center gap-3 sm:gap-4 mt-8 sm:mt-12"
           >
             {/* Previous Button */}
             <motion.button
@@ -221,13 +239,13 @@ const TestimonialsSection = () => {
               whileTap={{ scale: currentIndex === 0 ? 1 : 0.95 }}
               onClick={handlePrev}
               disabled={currentIndex === 0}
-              className={`w-12 h-12 rounded-full flex items-center justify-center border-2 transition-all duration-300 ${
+              className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center border-2 transition-all duration-300 ${
                 currentIndex === 0
                   ? 'border-gray-300 text-gray-300 cursor-not-allowed bg-white'
                   : 'bg-accent text-gray-700 border-accen shadow-lg hover:shadow-xl'
               }`}
             >
-              <ChevronLeft className="w-6 h-6" />
+              <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
             </motion.button>
 
             {/* Next Button */}
@@ -236,20 +254,20 @@ const TestimonialsSection = () => {
               whileTap={{ scale: currentIndex >= maxIndex ? 1 : 0.95 }}
               onClick={handleNext}
               disabled={currentIndex >= maxIndex}
-              className={`w-12 h-12 rounded-full flex items-center justify-center border-2 transition-all duration-300 ${
+              className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center border-2 transition-all duration-300 ${
                 currentIndex >= maxIndex
                   ? 'bg-gray-300 border-gray-300 text-gray-400 cursor-not-allowed'
                   : 'bg-accent text-gray-700 border-accen shadow-lg hover:shadow-xl'
               }`}
             >
-              <ChevronRight className="w-6 h-6" />
+              <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
             </motion.button>
           </motion.div>
         </div>
 
         {/* Decorative Elements */}
-        <div className="absolute top-20 right-10 w-64 h-64 bg-accent/5 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-20 left-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-20 right-10 w-48 h-48 sm:w-64 sm:h-64 bg-accent/5 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-20 left-10 w-48 h-48 sm:w-64 sm:h-64 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
       </div>
     </section>
   );

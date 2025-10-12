@@ -113,12 +113,12 @@ const ServicesSection = () => {
           y: -5,
           transition: { duration: 0.3 }
         }}
-        className="group relative overflow-hidden rounded-2xl p-6 cursor-pointer bg-white border-2 border-gray-200 hover:border-accent/50 shadow-lg hover:shadow-2xl transition-all duration-300"
+        className="group relative overflow-hidden rounded-xl md:rounded-2xl p-4 sm:p-6 cursor-pointer bg-white border-2 border-gray-200 hover:border-accent/50 shadow-lg hover:shadow-2xl transition-all duration-300"
       >
         {/* Content */}
         <div className="relative z-10 flex flex-col h-full">
           {/* Large Video Section */}
-          <div className="w-full h-64 rounded-xl overflow-hidden mb-6 bg-gray-100">
+          <div className="w-full h-48 sm:h-56 md:h-64 rounded-lg md:rounded-xl overflow-hidden mb-4 sm:mb-6 bg-gray-100">
             <video
               autoPlay
               muted
@@ -130,21 +130,21 @@ const ServicesSection = () => {
           </div>
 
           {/* Title */}
-          <h3 className="font-display font-bold text-xl text-gray-900 mb-3">
+          <h3 className="font-display font-bold text-lg sm:text-xl text-gray-900 mb-2 sm:mb-3">
             {service.title}
           </h3>
 
           {/* Description */}
-          <p className="text-gray-600 text-base mb-6 leading-relaxed">
+          <p className="text-gray-600 text-sm sm:text-base mb-4 sm:mb-6 leading-relaxed">
             {service.description}
           </p>
 
           {/* Features List */}
-          <ul className="space-y-3">
+          <ul className="space-y-2 sm:space-y-3">
             {service.features.map((feature, idx) => (
-              <li key={idx} className="flex items-center gap-3">
-                <CheckCircle className={`w-5 h-5 flex-shrink-0 ${service.iconColor}`} />
-                <span className="text-sm font-medium text-gray-700">
+              <li key={idx} className="flex items-center gap-2 sm:gap-3">
+                <CheckCircle className={`w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 ${service.iconColor}`} />
+                <span className="text-xs sm:text-sm font-medium text-gray-700">
                   {feature}
                 </span>
               </li>
@@ -159,8 +159,8 @@ const ServicesSection = () => {
   };
 
   return (
-    <section id="services" className="py-20 bg-gradient-to-b from-gray-50 to-white">
-      <div className="mx-auto px-4">
+    <section id="services" className="py-16 md:py-20 bg-gradient-to-b from-gray-50 to-white">
+      <div className="container mx-auto px-4">
         <motion.div
           ref={ref}
           variants={containerVariants}
@@ -169,10 +169,10 @@ const ServicesSection = () => {
           className="max-w-7xl mx-auto"
         >
           {/* Section Header */}
-          <div className="text-center mb-16">
+          <div className="text-center mb-12 md:mb-16">
             <motion.div
               variants={itemVariants}
-              className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-accent/10 to-orange-100 rounded-full text-accent font-medium text-sm mb-6"
+              className="inline-flex items-center gap-2 px-3 py-2 sm:px-4 sm:py-2 bg-gradient-to-r from-accent/10 to-orange-100 rounded-full text-accent font-medium text-xs sm:text-sm mb-4 sm:mb-6"
             >
               <CheckCircle className="w-4 h-4" />
               What We Offer
@@ -180,14 +180,14 @@ const ServicesSection = () => {
             
             <motion.h2
               variants={itemVariants}
-              className="font-display font-bold text-4xl md:text-5xl text-gray-900 mb-6"
+              className="font-display font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-gray-900 mb-4 sm:mb-6"
             >
               Expert Logistics Services
             </motion.h2>
             
             <motion.p
               variants={itemVariants}
-              className="text-xl text-gray-700 mx-auto leading-relaxed px-32"
+              className="text-base sm:text-lg md:text-xl text-gray-700 mx-auto leading-relaxed px-4 sm:px-8 md:px-16 lg:px-24"
             >
               From residential moves to international shipping, we provide comprehensive logistics solutions 
               tailored to your specific needs with professional expertise and modern technology.
@@ -195,7 +195,7 @@ const ServicesSection = () => {
           </div>
 
           {/* Services Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {services.map((service) => (
               <ServiceCard key={service.id} service={service} />
             ))}

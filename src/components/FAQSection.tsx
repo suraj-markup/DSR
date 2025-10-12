@@ -48,9 +48,9 @@ const FAQAccordionItem = ({ faq, isOpen, onToggle }: { faq: FAQItem; isOpen: boo
     <div className="border-b border-gray-200 last:border-b-0">
       <button
         onClick={onToggle}
-        className="w-full py-6 flex items-center justify-between text-left group hover:opacity-70 transition-opacity duration-200"
+        className="w-full py-4 sm:py-6 flex items-center justify-between text-left group hover:opacity-70 transition-opacity duration-200"
       >
-        <span className={`text-lg md:text-xl font-normal pr-8 transition-colors duration-200 ${
+        <span className={`text-base sm:text-lg md:text-xl font-normal pr-6 sm:pr-8 transition-colors duration-200 ${
           isOpen ? 'text-orange-600' : 'text-gray-900'
         }`}>
           {faq.question}
@@ -60,7 +60,7 @@ const FAQAccordionItem = ({ faq, isOpen, onToggle }: { faq: FAQItem; isOpen: boo
           transition={{ duration: 0.3, ease: 'easeInOut' }}
           className="flex-shrink-0"
         >
-          <Plus className={`w-6 h-6 transition-colors duration-200 ${
+          <Plus className={`w-5 h-5 sm:w-6 sm:h-6 transition-colors duration-200 ${
             isOpen ? 'text-orange-600' : 'text-gray-900'
           }`} strokeWidth={1.5} />
         </motion.div>
@@ -75,8 +75,8 @@ const FAQAccordionItem = ({ faq, isOpen, onToggle }: { faq: FAQItem; isOpen: boo
             transition={{ duration: 0.3, ease: 'easeInOut' }}
             className="overflow-hidden"
           >
-            <div className="pb-6 pl-4 pr-2">
-              <p className="text-base text-gray-600 leading-relaxed">
+            <div className="pb-4 sm:pb-6 pl-2 sm:pl-4 pr-2">
+              <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
                 {faq.answer}
               </p>
             </div>
@@ -101,25 +101,25 @@ const FAQSection = () => {
   return (
     <section
       ref={ref}
-      className="relative py-20 md:py-28 bg-white overflow-hidden"
+      className="relative py-16 md:py-20 lg:py-28 bg-white overflow-hidden"
     >
       <div className="container mx-auto px-4">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+        <div className="grid lg:grid-cols-2 gap-8 md:gap-12 lg:gap-20 items-start">
           {/* Left Column - Heading */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
             transition={{ duration: 0.6 }}
-            className="lg:sticky lg:top-1"
+            className="lg:sticky lg:top-1 mb-8 lg:mb-0"
           >
             {/* Badge */}
-            <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-accent/10 to-orange-100 rounded-full text-sm text-gray-700 font-medium mb-6">
-            <ShieldQuestionIcon className="w-4 h-4 " /> 
+            <div className="inline-flex items-center px-3 py-2 sm:px-4 sm:py-2 bg-gradient-to-r from-accent/10 to-orange-100 rounded-full text-xs sm:text-sm text-gray-700 font-medium mb-4 sm:mb-6">
+            <ShieldQuestionIcon className="w-3 h-3 sm:w-4 sm:h-4" /> 
              <span className='ml-1'> FAQs</span>
             </div>
 
             {/* Main Heading */}
-            <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 leading-tight mb-4">
+            <h2 className="font-display text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 leading-tight mb-3 sm:mb-4">
               Frequently Asked Questions.
             </h2>
 
@@ -133,7 +133,7 @@ const FAQSection = () => {
               <img
                 src={oneImage}
                 alt="FAQ Illustration"
-                className="w-full max-w-md rounded-2xl shadow-lg"
+                className="w-full max-w-sm sm:max-w-md rounded-xl sm:rounded-2xl shadow-lg"
               />
             </motion.div>
           </motion.div>
@@ -143,7 +143,7 @@ const FAQSection = () => {
             initial={{ opacity: 0, x: 30 }}
             animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="space-y-0 mt-10"
+            className="space-y-0 mt-6 sm:mt-10 "
           >
             {faqs.map((faq, index) => (
               <motion.div
@@ -164,8 +164,8 @@ const FAQSection = () => {
       </div>
 
       {/* Decorative Elements */}
-      <div className="absolute top-40 right-20 w-64 h-64 bg-accent/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-40 left-20 w-64 h-64 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-40 right-20 w-48 h-48 sm:w-64 sm:h-64 bg-accent/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-40 left-20 w-48 h-48 sm:w-64 sm:h-64 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
     </section>
   );
 };

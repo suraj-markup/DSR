@@ -84,10 +84,6 @@ h3 {
   font-weight: 500;
 }
 
-p {
-  margin: 0;
-  /* Color handled by Tailwind utility classes */
-}
 
 
 
@@ -226,8 +222,6 @@ button {
 .container {
   width: 100%;
   max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 var(--container-padding);
 }
 
 @media (min-width: 640px) {

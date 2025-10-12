@@ -29,8 +29,7 @@ const StatCard = ({ value, suffix, label, index }: StatCardProps) => {
     }
   }, [inView, count, value]);
 
-  // Alternating vertical positions for wave effect
-  const yOffset = index % 2 === 0 ? 0 : 40;
+  // Alternating vertical positions for wave effect (only on desktop)
   
   return (
     <motion.div
@@ -42,17 +41,16 @@ const StatCard = ({ value, suffix, label, index }: StatCardProps) => {
         delay: index * 0.15,
         ease: "easeOut" as const,
       }}
-      className="relative"
-      style={{ marginTop: yOffset }}
+      className={`relative ${index % 2 === 1 ? 'lg:mt-5' : ''}`}
     >
       {/* Hexagonal Card */}
       <motion.div
         whileHover={{ y: -8, scale: 1.02 }}
         transition={{ duration: 0.3 }}
-        className="relative bg-white rounded-3xl p-8 md:p-10 min-w-[200px] md:min-w-[240px] flex flex-col items-center justify-center transition-all duration-300"
+        className="relative bg-white rounded-2xl lg:rounded-3xl p-6 sm:p-8 md:p-10 w-full max-w-[280px] sm:max-w-[240px] lg:max-w-[260px] flex flex-col items-center justify-center transition-all duration-300"
         style={{
           clipPath: 'polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)',
-          minHeight: '240px',
+          minHeight: '200px',
           boxShadow: '0 20px 50px rgba(0, 0, 0, 0.25), 0 10px 20px rgba(0, 0, 0, 0.15)',
         }}
       >
@@ -66,12 +64,12 @@ const StatCard = ({ value, suffix, label, index }: StatCardProps) => {
         />
         
         {/* Number */}
-        <div className="text-5xl md:text-6xl font-bold text-gray-900 mb-3">
+        <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-2 sm:mb-3">
           {displayValue.toLocaleString()}{suffix}
         </div>
 
         {/* Label */}
-        <div className="text-sm md:text-base text-gray-700 font-medium text-center leading-snug">
+        <div className="text-xs sm:text-sm md:text-base text-gray-700 font-medium text-center leading-snug px-2">
           {label}
         </div>
       </motion.div>
@@ -95,12 +93,12 @@ const StatsSection = () => {
   return (
     <section
       ref={ref}
-      className="relative py-20 md:py-28 bg-gradient-to-br from-accent via-orange-500 to-accent overflow-hidden"
+      className="relative py-16 md:py-20 lg:py-28 bg-gradient-to-br from-accent via-orange-500 to-accent overflow-hidden"
     >
       {/* Decorative Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-white/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-orange-600/20 rounded-full blur-3xl" />
+        <div className="absolute top-0 left-1/4 w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 bg-white/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-1/4 w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 bg-orange-600/20 rounded-full blur-3xl" />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
@@ -109,18 +107,18 @@ const StatsSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16 md:mb-20"
+          className="text-center mb-12 md:mb-16 lg:mb-20"
         >
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
+          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-3 md:mb-4">
             Some counts that matter
           </h2>
-          <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-white/90 mx-auto px-4">
             Our achievement in the journey depicted in numbers
           </p>
         </motion.div>
 
         {/* Stats Grid */}
-        <div className="flex flex-wrap items-start justify-center gap-6 md:gap-8 lg:gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 lg:gap-6 items-start justify-items-center">
           {stats.map((stat, index) => (
             <StatCard
               key={index}

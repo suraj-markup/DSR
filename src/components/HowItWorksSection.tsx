@@ -94,7 +94,7 @@ const HowItWorksSection = () => {
 
 
   return (
-    <section id="how-it-works" className="py-20 bg-white">
+    <section id="how-it-works" className="py-16 md:py-20 bg-white">
       <div className="container mx-auto px-4">
         <motion.div
           ref={ref}
@@ -104,10 +104,10 @@ const HowItWorksSection = () => {
           className="max-w-7xl mx-auto"
         >
           {/* Section Header */}
-          <div className="text-center mb-16">
+          <div className="text-center mb-12 md:mb-16">
           <motion.div
               variants={itemVariants}
-              className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-accent/10 to-orange-100 rounded-full text-accent font-medium text-sm mb-6"
+              className="inline-flex items-center gap-2 px-3 py-2 sm:px-4 sm:py-2 bg-gradient-to-r from-accent/10 to-orange-100 rounded-full text-accent font-medium text-xs sm:text-sm mb-4 sm:mb-6"
             >
               <CheckCircle className="w-4 h-4" />
               Simple Process
@@ -115,14 +115,14 @@ const HowItWorksSection = () => {
             
             <motion.h2
               variants={itemVariants}
-              className="font-display font-bold text-4xl md:text-5xl text-gray-900 mb-6"
+              className="font-display font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-gray-900 mb-4 sm:mb-6"
             >
               How It Works - In 3 Easy Steps
             </motion.h2>
             
             <motion.p
               variants={itemVariants}
-              className="text-xl text-gray-700 mx-auto px-32"
+              className="text-base sm:text-lg md:text-xl text-gray-700 mx-auto px-4 sm:px-8 md:px-16 lg:px-24 xl:px-32"
             >
               Our streamlined process ensures your move is stress-free from start to finish. 
               We handle all the details so you can focus on what matters most.
@@ -130,12 +130,12 @@ const HowItWorksSection = () => {
           </div>
 
           {/* Simple Timeline */}
-          <div className="relative mb-16">
+          <div className="relative mb-12 md:mb-16">
             {/* Desktop Timeline */}
             <div className="hidden lg:block">
-              <div className="relative flex items-center justify-between px-8 py-12">
+              <div className="relative flex items-center justify-between px-4 lg:px-8 py-8 lg:py-12">
                 {/* Connecting Line - positioned behind content */}
-                <div className="absolute top-24 left-20 right-20 h-0.5 bg-gray-300 transform -translate-y-1/2 z-0" />
+                <div className="absolute top-20 lg:top-24 left-16 lg:left-20 right-16 lg:right-20 h-0.5 bg-gray-300 transform -translate-y-1/2 z-0" />
                 
                 {/* Timeline Steps */}
                 {steps.map((step, index) => {
@@ -150,24 +150,24 @@ const HowItWorksSection = () => {
                       transition={{ duration: 0.6, delay: index * 0.2 }}
                     >
                       {/* Step Number Circle */}
-                      <div className="relative z-20 flex items-center justify-center w-16 h-16 rounded-full mb-6 border-2 border-gray-600 bg-white">
-                        <span className="text-xl font-bold text-gray-600">
+                      <div className="relative z-20 flex items-center justify-center w-14 h-14 lg:w-16 lg:h-16 rounded-full mb-4 lg:mb-6 border-2 border-gray-600 bg-white">
+                        <span className="text-lg lg:text-xl font-bold text-gray-600">
                           {index + 1}
                         </span>
                         
                         {/* Icon overlay */}
-                        <div className="absolute -top-1 -right-1 w-6 h-6 bg-white rounded-full border border-gray-300 flex items-center justify-center">
-                          <Icon className="w-3 h-3 text-gray-500" />
+                        <div className="absolute -top-1 -right-1 w-5 h-5 lg:w-6 lg:h-6 bg-white rounded-full border border-gray-300 flex items-center justify-center">
+                          <Icon className="w-2.5 lg:w-3 h-2.5 lg:h-3 text-gray-500" />
                         </div>
                       </div>
 
                       {/* Step Content */}
                       <div className="bg-white relative z-10 px-2">
-                        <h3 className="font-display font-bold text-xl mb-3 text-gray-900">
+                        <h3 className="font-display font-bold text-lg lg:text-xl mb-2 lg:mb-3 text-gray-900">
                           {step.title}
                         </h3>
                         
-                        <p className="text-gray-600 leading-relaxed">
+                        <p className="text-sm lg:text-base text-gray-600 leading-relaxed">
                           {step.description}
                         </p>
                       </div>
@@ -178,37 +178,37 @@ const HowItWorksSection = () => {
             </div>
 
             {/* Mobile Timeline */}
-            <div className="lg:hidden space-y-8">
+            <div className="lg:hidden space-y-6 md:space-y-8">
               {steps.map((step, index) => {
                 const Icon = step.icon;
                 
                 return (
                   <motion.div
                     key={step.id}
-                    className="flex items-start gap-6"
+                    className="flex items-start gap-4 sm:gap-6"
                     initial={{ opacity: 0, x: -30 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.6, delay: index * 0.2 }}
                   >
                     {/* Step Number Circle */}
-                    <div className="flex-shrink-0 flex items-center justify-center w-12 h-12 rounded-full border-2 border-gray-600 bg-white relative">
-                      <span className="text-lg font-bold text-gray-600">
+                    <div className="flex-shrink-0 flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-gray-600 bg-white relative">
+                      <span className="text-base sm:text-lg font-bold text-gray-600">
                         {index + 1}
                       </span>
                       
                       {/* Icon overlay */}
-                      <div className="absolute -top-1 -right-1 w-5 h-5 bg-white rounded-full border border-gray-300 flex items-center justify-center">
-                        <Icon className="w-2.5 h-2.5 text-gray-500" />
+                      <div className="absolute -top-1 -right-1 w-4 h-4 sm:w-5 sm:h-5 bg-white rounded-full border border-gray-300 flex items-center justify-center">
+                        <Icon className="w-2 h-2 sm:w-2.5 sm:h-2.5 text-gray-500" />
                       </div>
                     </div>
 
                     {/* Step Content */}
                     <div className="flex-1">
-                      <h3 className="font-display font-bold text-lg mb-2 text-gray-900">
+                      <h3 className="font-display font-bold text-base sm:text-lg mb-2 text-gray-900">
                         {step.title}
                       </h3>
                       
-                      <p className="text-gray-600 leading-relaxed">
+                      <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
                         {step.description}
                       </p>
                     </div>
@@ -221,7 +221,7 @@ const HowItWorksSection = () => {
           {/* Features Grid */}
           <motion.div
             variants={itemVariants}
-            className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12"
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mb-12"
           >
             {features.map((feature, index) => {
               const Icon = feature.icon;
@@ -230,15 +230,15 @@ const HowItWorksSection = () => {
                 <motion.div
                   key={index}
                   whileHover={{ scale: 1.05, y: -5 }}
-                  className="bg-white rounded-xl p-6 text-center border border-gray-200 hover:shadow-lg transition-all duration-300"
+                  className="bg-white rounded-xl p-4 sm:p-6 text-center border border-gray-200 hover:shadow-lg transition-all duration-300"
                 >
-                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-r from-primary/10 to-secondary/10 mb-4">
-                    <Icon className="w-6 h-6 text-primary" />
+                  <div className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-r from-primary/10 to-secondary/10 mb-3 sm:mb-4">
+                    <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
                   </div>
-                  <h4 className="font-semibold text-gray-900 mb-2">
+                  <h4 className="font-semibold text-sm sm:text-base text-gray-900 mb-2">
                     {feature.title}
                   </h4>
-                  <p className="text-sm text-gray-700">
+                  <p className="text-xs sm:text-sm text-gray-700">
                     {feature.description}
                   </p>
                 </motion.div>

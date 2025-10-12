@@ -7,14 +7,15 @@ const QuoteForm = () => {
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 1 }}
-      className="relative z-20 -mt-20 mb-20"
+      className="relative z-20 -mt-16 lg:-mt-20 mb-16 lg:mb-20"
     >
       {/* Floating Form Card */}
-      <div className="bg-white rounded-2xl shadow-2xl border border-gray-100 px-8 py-8 max-w-7xl mx-auto">
+      <div className="container mx-auto px-4">
+        <div className="bg-white rounded-xl lg:rounded-2xl shadow-2xl border border-gray-100 px-4 sm:px-6 lg:px-8 py-6 lg:py-8 max-w-7xl mx-auto">
         {/* Main Form Row - Compact One Line */}
-        <div className="flex flex-col xl:flex-row gap-4 items-center justify-center max-w-7xl mx-auto">
+        <div className="flex flex-col sm:flex-row lg:flex-row xl:flex-row gap-3 sm:gap-4 lg:gap-6 items-center justify-center">
           {/* From Location */}
-          <div className="w-full xl:w-auto xl:min-w-[200px]">
+          <div className="w-full sm:w-auto sm:min-w-[140px] lg:min-w-[160px] xl:min-w-[180px]">
             <label className="block text-sm font-medium text-gray-700 mb-2">
               From
             </label>
@@ -32,13 +33,13 @@ const QuoteForm = () => {
           <motion.button
             whileHover={{ scale: 1.1, rotate: 180 }}
             whileTap={{ scale: 0.9 }}
-            className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors duration-200 self-center mt-6"
+            className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors duration-200 self-center mt-4 sm:mt-0"
           >
-            <ArrowRightLeft className="w-4 h-4 text-gray-600" />
+            <ArrowRightLeft className="w-4 h-4 text-gray-600 rotate-90 sm:rotate-0" />
           </motion.button>
 
           {/* To Location */}
-          <div className="w-full xl:w-auto xl:min-w-[200px]">
+          <div className="w-full sm:w-auto sm:min-w-[140px] lg:min-w-[160px] xl:min-w-[180px]">
             <label className="block text-sm font-medium text-gray-700 mb-2">
               To
             </label>
@@ -53,7 +54,7 @@ const QuoteForm = () => {
           </div>
 
           {/* Moving Date */}
-          <div className="w-full xl:w-auto xl:min-w-[180px]">
+          <div className="w-full sm:w-auto sm:min-w-[140px] lg:min-w-[160px] xl:min-w-[180px]">
             <label className="block text-sm font-medium text-gray-700 mb-2">
               Moving Date
             </label>
@@ -67,7 +68,7 @@ const QuoteForm = () => {
           </div>
 
           {/* Service Type */}
-          <div className="w-full xl:w-auto xl:min-w-[180px]">
+          <div className="w-full sm:w-auto sm:min-w-[140px] lg:min-w-[160px] xl:min-w-[180px]">
             <label className="block text-sm font-medium text-gray-700 mb-2">
               Service Type
             </label>
@@ -86,11 +87,12 @@ const QuoteForm = () => {
           <motion.button
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className="bg-gradient-to-r from-accent to-orange-500 text-white px-6 py-2.5 rounded-lg font-semibold flex items-center gap-2 shadow-lg hover:shadow-xl transition-all duration-200 group text-sm self-end"
+            className="bg-gradient-to-r from-accent to-orange-500 text-white px-6 py-2.5 rounded-lg font-semibold flex items-center gap-2 shadow-lg hover:shadow-xl transition-all duration-200 group text-sm self-end w-full sm:w-auto"
           >
             <span>Get Quote</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
           </motion.button>
+        </div>
         </div>
       </div>
     </motion.div>
