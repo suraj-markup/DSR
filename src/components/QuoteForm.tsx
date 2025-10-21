@@ -7,7 +7,7 @@ const QuoteForm = () => {
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 1 }}
-      className="relative z-20 -mt-16 lg:-mt-20 mb-16 lg:mb-20"
+      className="relative z-20 -mt-16 lg:-mt-16 mb-8 lg:mb-16"
     >
       {/* Floating Form Card */}
       <div className="container mx-auto px-4">
@@ -87,7 +87,7 @@ const QuoteForm = () => {
           <motion.button
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className="bg-gradient-to-r from-accent to-orange-500 text-white px-6 py-2.5 rounded-lg font-semibold flex items-center gap-2 shadow-lg hover:shadow-xl transition-all duration-200 group text-sm self-end w-full sm:w-auto"
+            className="bg-gradient-to-r from-orange-400 to-orange-600 text-white px-6 py-2.5 rounded-lg font-semibold flex items-center gap-2 shadow-lg hover:shadow-xl transition-all duration-200 group text-sm self-end w-full sm:w-auto"
           >
             <span>Get Quote</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />

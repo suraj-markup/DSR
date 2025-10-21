@@ -1,50 +1,27 @@
 
-import HeroSection from './components/HeroSection'
-import QuoteForm from './components/QuoteForm'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Header from './components/Header'
-import ServicesSection from './components/ServicesSection'
-import HowItWorksSection from './components/HowItWorksSection'
-import StatsSection from './components/StatsSection'
-import TestimonialsSection from './components/TestimonialsSection'
-import FAQSection from './components/FAQSection'
-import ContactSection from './components/ContactSection'
 import Footer from './components/Footer'
+import HomePage from './pages/HomePage'
+import GalleryPage from './components/GalleryPage'
 
 function App() {
   return (
-    <div className="min-h-screen">
-      {/* Header Navigation */}
-      <Header />
-      
-      {/* Hero Section - Full Height */}
-      <section id="home">
-        <HeroSection />
-      </section>
-      
-      {/* Floating Quote Form */}
-      <QuoteForm />
-      
-      {/* Services Section */}
-      <ServicesSection />
-      
-      {/* How It Works Section */}
-      <HowItWorksSection />
-      
-      {/* Stats Section */}
-      <StatsSection />
-      
-      {/* Testimonials Section */}
-      <TestimonialsSection />
-      
-      {/* FAQ Section */}
-      <FAQSection />
-      
-      {/* Contact Section */}
-      <ContactSection />
-      
-      {/* Footer */}
-      <Footer />
-    </div>
+    <Router>
+      <div className="min-h-screen">
+        {/* Header Navigation */}
+        <Header />
+        
+        {/* Routes */}
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/gallery" element={<GalleryPage />} />
+        </Routes>
+        
+        {/* Footer */}
+        <Footer />
+      </div>
+    </Router>
   )
 }
 

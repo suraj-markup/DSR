@@ -113,15 +113,20 @@ const FAQSection = () => {
             className="lg:sticky lg:top-1 mb-8 lg:mb-0"
           >
             {/* Badge */}
-            <div className="inline-flex items-center px-3 py-2 sm:px-4 sm:py-2 bg-gradient-to-r from-accent/10 to-orange-100 rounded-full text-xs sm:text-sm text-gray-700 font-medium mb-4 sm:mb-6">
-            <ShieldQuestionIcon className="w-3 h-3 sm:w-4 sm:h-4" /> 
-             <span className='ml-1'> FAQs</span>
+            <div className="inline-flex items-center gap-2 px-3 py-2 sm:px-4 sm:py-2 bg-gradient-to-r from-blue-100 to-orange-100 rounded-full text-blue-700 font-medium text-xs sm:text-sm mb-4 sm:mb-6">
+              <ShieldQuestionIcon className="w-4 h-4" /> 
+              FAQs
             </div>
 
             {/* Main Heading */}
-            <h2 className="font-display text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 leading-tight mb-3 sm:mb-4">
-              Frequently Asked Questions.
+            <h2 className="font-display font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-gray-900 mb-4 sm:mb-6">
+              <span className="text-blue-700">Frequently Asked</span> <span className='text-yellow-500'>Questions</span>
             </h2>
+            
+            {/* Subtitle */}
+            <p className="text-base sm:text-lg md:text-xl text-gray-700 leading-relaxed mb-6">
+              Find answers to common questions about our services, pricing, and delivery process.
+            </p>
 
             {/* Image */}
             <motion.div

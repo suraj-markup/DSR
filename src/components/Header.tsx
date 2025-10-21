@@ -1,11 +1,14 @@
 import { motion, useScroll } from 'framer-motion';
 import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { Menu, X, Phone, Mail } from 'lucide-react';
 import logoImage from '../assets/logo.png';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { scrollYProgress } = useScroll();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   // Close mobile menu when clicking outside or on escape key
   useEffect(() => {
@@ -33,7 +36,7 @@ const Header = () => {
 
     document.addEventListener('click', handleClickOutside);
     document.addEventListener('keydown', handleEscapeKey);
-    
+
     return () => {
       document.removeEventListener('click', handleClickOutside);
       document.removeEventListener('keydown', handleEscapeKey);
@@ -42,21 +45,44 @@ const Header = () => {
   }, [isMenuOpen]);
 
   const navItems = [
-    { name: 'Home', href: '#home' },
-    { name: 'Services', href: '#services' },
-    { name: 'How It Works', href: '#how-it-works' },
-    { name: 'About', href: '#about' },
-    { name: 'Testimonials', href: '#testimonials' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Home', href: '#home', type: 'hash' },
+    { name: 'Services', href: '#services', type: 'hash' },
+    { name: 'How It Works', href: '#how-it-works', type: 'hash' },
+    { name: 'About', href: '#about', type: 'hash' },
+    { name: 'Testimonials', href: '#testimonials', type: 'hash' },
+    { name: 'Gallery', href: '/gallery', type: 'route' },
+    { name: 'Contact', href: '#contact', type: 'hash' },
   ];
 
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ 
-        behavior: 'smooth',
-        block: 'start'
-      });
+  const handleNavigation = (href: string, type: string) => {
+    if (type === 'route') {
+      // Navigate to different page
+      navigate(href);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      // Scroll to section on current page
+      if (location.pathname !== '/') {
+        // If not on home page, go to home first then scroll
+        navigate('/');
+        setTimeout(() => {
+          const element = document.querySelector(href);
+          if (element) {
+            element.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        }, 100);
+      } else {
+        // Already on home page, just scroll
+        const element = document.querySelector(href);
+        if (element) {
+          element.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      }
     }
     setIsMenuOpen(false);
   };
@@ -74,60 +100,71 @@ const Header = () => {
 
       {/* Header */}
       <motion.header
-        className="fixed top-0 left-0 right-0 z-40 bg-white shadow-md transition-all duration-300"
+        className="relative bg-white shadow-md transition-all duration-300"
       >
-        <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-14 sm:h-16 lg:h-20">
-            {/* Logo */}
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              className="flex items-center cursor-pointer"
-              onClick={() => scrollToSection('#home')}
-            >
-              <img 
-                src={logoImage} 
-                alt="DSR Logistics" 
-                className="h-10 sm:h-12 md:h-14 w-auto object-contain"
-              />
-            </motion.div>
-
-            {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8">
-              {navItems.map((item, index) => (
-                <motion.button
-                  key={item.name}
-                  onClick={() => scrollToSection(item.href)}
-                  className="relative text-gray-700 hover:text-primary font-medium transition-colors duration-200 text-sm xl:text-base"
-                  whileHover={{ y: -2 }}
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                >
-                  {item.name}
-                  <motion.div
-                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-accent to-orange-500"
-                    initial={{ scaleX: 0 }}
-                    whileHover={{ scaleX: 1 }}
-                    transition={{ duration: 0.2 }}
-                  />
-                </motion.button>
-              ))}
-            </nav>
-
-            {/* Right Side Actions */}
-            <div className="flex items-center gap-2 sm:gap-4">
-              {/* CTA Button */}
-              <motion.button
-                whileHover={{ 
-                  scale: 1.05,
-                  boxShadow: '0 0 20px rgba(247, 148, 29, 0.4)'
-                }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => scrollToSection('#contact')}
-                className="hidden sm:flex items-center gap-1 sm:gap-2 px-4 sm:px-6 py-2 sm:py-2.5 bg-gradient-to-r from-accent to-orange-500 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-200 text-xs sm:text-sm"
+        {/* Header - White Background */}
+        <div className="bg-white border-b border-gray-200">
+          <div className="container mx-auto px-4">
+            <div className="flex items-center justify-between py-1">
+              {/* Left Side - Logo and Company Name */}
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                className="flex items-center cursor-pointer"
+                onClick={() => handleNavigation('/', 'route')}
               >
-                Get Free Quote
-              </motion.button>
+                <img
+                  src={logoImage}
+                  alt="DSR Logistics"
+                  className="h-24 w-48 rounded-lg"
+                />
+                <div className="ml-4 font-bold">
+                  <div className="text-base">
+                    <span className="text-black">Seamless</span>{' '}
+                    <span className="text-yellow-500">Moving,</span>
+                  </div>
+                  <div className="text-base">
+                    <span className="text-yellow-500"> Stress-Free </span>{' '}
+                    <span className="text-black">Solution</span>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Right Side - Contact Info and CTA Button */}
+              <div className="hidden lg:flex items-center space-x-6">
+                {/* Phone Contact */}
+                <div className="flex items-center space-x-3">
+                  <Phone className="w-8 h-8 text-black" />
+                  <div>
+                    <div className="text-black text-sm">Call us</div>
+                    <div className="text-blue-700 text-sm font-medium">+1 (555) 123-4567</div>
+                  </div>
+                </div>
+
+                {/* Vertical Separator */}
+                <div className="w-px h-8 bg-gray-300"></div>
+
+                {/* Email Contact */}
+                <div className="flex items-center space-x-3">
+                  <Mail className="w-8 h-8 text-black" />
+                  <div>
+                    <div className="text-black text-sm">Email</div>
+                    <div className="text-blue-700 text-sm font-medium">info@dsrlogistics.com</div>
+                  </div>
+                </div>
+
+                {/* Vertical Separator */}
+                <div className="w-px h-8 bg-gray-300"></div>
+
+                {/* CTA Button */}
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => handleNavigation('#contact', 'hash')}
+                  className="bg-blue-800 hover:bg-blue-900 text-white font-semibold px-6 py-3 rounded-lg transition-colors duration-200"
+                >
+                  Get Free Quote
+                </motion.button>
+              </div>
 
               {/* Mobile Menu Button */}
               <motion.button
@@ -138,12 +175,33 @@ const Header = () => {
                 aria-expanded={isMenuOpen}
               >
                 {isMenuOpen ? (
-                  <X className="w-5 h-5 sm:w-6 sm:h-6 text-gray-600" />
+                  <X className="w-5 h-5 text-gray-600" />
                 ) : (
-                  <Menu className="w-5 h-5 sm:w-6 sm:h-6 text-gray-600" />
+                  <Menu className="w-5 h-5 text-gray-600" />
                 )}
               </motion.button>
             </div>
+          </div>
+        </div>
+
+        {/* Navigation Section - Blue Background */}
+        <div className="bg-blue-600">
+          <div className="container mx-auto px-4">
+            <nav className="hidden lg:flex items-center justify-center space-x-8 py-3">
+              {navItems.map((item, index) => (
+                <motion.button
+                  key={item.name}
+                  onClick={() => handleNavigation(item.href, item.type)}
+                  className="text-white hover:text-gray-200 font-medium transition-colors duration-200 text-xl"
+                  whileHover={{ y: -1 }}
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                >
+                  {item.name}
+                </motion.button>
+              ))}
+            </nav>
           </div>
         </div>
 
@@ -169,33 +227,33 @@ const Header = () => {
           transition={{ duration: 0.3, ease: 'easeInOut' }}
           className="lg:hidden overflow-hidden bg-white border-t border-gray-200 shadow-lg relative z-40"
         >
-          <div className="container mx-auto px-4 py-4 sm:py-6 mobile-menu">
-            <nav className="flex flex-col space-y-2 sm:space-y-4">
+          <div className="container mx-auto px-4 py-4 mobile-menu">
+            <nav className="flex flex-col space-y-2">
               {navItems.map((item, index) => (
                 <motion.button
                   key={item.name}
-                  onClick={() => scrollToSection(item.href)}
-                  className="text-left py-3 px-4 text-gray-700 hover:text-primary hover:bg-gray-50 rounded-lg font-medium transition-all duration-200 text-sm sm:text-base touch-manipulation"
+                  onClick={() => handleNavigation(item.href, item.type)}
+                  className="text-left py-3 px-4 text-gray-700 hover:text-primary hover:bg-gray-50 rounded-lg font-medium transition-all duration-200 text-sm touch-manipulation"
                   initial={{ opacity: 0, x: -20 }}
-                  animate={{ 
-                    opacity: isMenuOpen ? 1 : 0, 
-                    x: isMenuOpen ? 0 : -20 
+                  animate={{
+                    opacity: isMenuOpen ? 1 : 0,
+                    x: isMenuOpen ? 0 : -20
                   }}
                   transition={{ delay: index * 0.1 }}
                 >
                   {item.name}
                 </motion.button>
               ))}
-              
+
               {/* Mobile CTA */}
               <motion.button
                 whileTap={{ scale: 0.95 }}
-                onClick={() => scrollToSection('#contact')}
-                className="mt-4 py-3 px-6 bg-gradient-to-r from-accent to-orange-500 text-white font-semibold rounded-lg shadow-lg text-center text-sm sm:text-base touch-manipulation"
+                onClick={() => handleNavigation('#contact', 'hash')}
+                className="mt-4 py-3 px-6 bg-blue-800 text-white font-semibold rounded-lg shadow-lg text-center text-sm touch-manipulation"
                 initial={{ opacity: 0, y: 20 }}
-                animate={{ 
-                  opacity: isMenuOpen ? 1 : 0, 
-                  y: isMenuOpen ? 0 : 20 
+                animate={{
+                  opacity: isMenuOpen ? 1 : 0,
+                  y: isMenuOpen ? 0 : 20
                 }}
                 transition={{ delay: 0.3 }}
               >

@@ -13,30 +13,30 @@ export default {
       colors: {
         // Light Mode Colors
         primary: {
-          DEFAULT: '#0D2B4E',
+          DEFAULT: '#1E3A8A', // Updated to darker blue
           50: '#E6F0F8',
           100: '#CCE1F1',
           200: '#99C3E3',
           300: '#66A5D5',
           400: '#3387C7',
-          500: '#0D2B4E', // Main primary
-          600: '#0A2240',
-          700: '#081A32',
+          500: '#1E3A8A', // Main primary - dark blue
+          600: '#1E40AF', // Darker blue
+          700: '#1D4ED8', // Even darker blue
           800: '#061224',
           900: '#040A16',
         },
         secondary: {
-          DEFAULT: '#5490F1',
-          50: '#E6F0FE',
-          100: '#CCE1FD',
-          200: '#99C3FB',
-          300: '#66A5F9',
-          400: '#3387F7',
-          500: '#5490F1', // Main secondary
-          600: '#4273C1',
-          700: '#315691',
-          800: '#213961',
-          900: '#101C31',
+          DEFAULT: '#3B82F6', // Updated to blue
+          50: '#EFF6FF',
+          100: '#DBEAFE',
+          200: '#BFDBFE',
+          300: '#93C5FD',
+          400: '#60A5FA',
+          500: '#3B82F6', // Main secondary - blue
+          600: '#2563EB', // Darker blue
+          700: '#1D4ED8', // Even darker blue
+          800: '#1E40AF',
+          900: '#1E3A8A',
         },
         accent: {
           DEFAULT: '#F7941D',
@@ -147,6 +147,11 @@ export default {
         '18': '4.5rem',
         '88': '22rem',
         '128': '32rem',
+      },
+      maxWidth: {
+        '8xl': '88rem',   // 1408px
+        '9xl': '96rem',   // 1536px
+        '10xl': '104rem', // 1664px
       },
       borderRadius: {
         '4xl': '2rem',

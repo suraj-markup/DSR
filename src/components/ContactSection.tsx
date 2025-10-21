@@ -102,18 +102,18 @@ const ContactSection = () => {
             {/* Header Section */}
             <div>
               {/* Badge */}
-              <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-accent/10 to-orange-100 rounded-full text-sm font-semibold mb-6 shadow-lg">
+              <div className="inline-flex items-center gap-2 px-3 py-2 sm:px-4 sm:py-2 bg-gradient-to-r from-blue-100 to-orange-100 rounded-full text-blue-700 font-medium text-xs sm:text-sm mb-4 sm:mb-6">
                 <Send className="w-4 h-4" />
                 Get In Touch 
               </div>
 
               {/* Main Heading */}
-              <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-                Let's Get Your Shipment Moving
+              <h2 className="font-display font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-gray-900 mb-4 sm:mb-6">
+                <span className="text-blue-700">Let's Get Your</span> <span className="text-yellow-500">Shipment Moving</span>
               </h2>
 
               {/* Subheading */}
-              <p className="text-lg text-gray-700 leading-relaxed font-medium">
+              <p className="text-base sm:text-lg md:text-xl text-gray-700 leading-relaxed">
                 Get in touch with our team for quotes, inquiries, or support. We're here to help with all your logistics needs.
               </p>
             </div>

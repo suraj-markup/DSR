@@ -94,7 +94,7 @@ const HowItWorksSection = () => {
 
 
   return (
-    <section id="how-it-works" className="py-16 md:py-20 bg-white">
+    <section id="how-it-works" className="py-16 bg-white">
       <div className="container mx-auto px-4">
         <motion.div
           ref={ref}
@@ -104,10 +104,10 @@ const HowItWorksSection = () => {
           className="max-w-7xl mx-auto"
         >
           {/* Section Header */}
-          <div className="text-center mb-12 md:mb-16">
+          <div className="text-center mb-8">
           <motion.div
               variants={itemVariants}
-              className="inline-flex items-center gap-2 px-3 py-2 sm:px-4 sm:py-2 bg-gradient-to-r from-accent/10 to-orange-100 rounded-full text-accent font-medium text-xs sm:text-sm mb-4 sm:mb-6"
+              className="inline-flex items-center gap-2 px-3 py-2 sm:px-4 sm:py-2 bg-gradient-to-r from-blue-100 to-orange-100 rounded-full text-blue-700 font-medium text-xs sm:text-sm mb-4"
             >
               <CheckCircle className="w-4 h-4" />
               Simple Process
@@ -117,7 +117,7 @@ const HowItWorksSection = () => {
               variants={itemVariants}
               className="font-display font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-gray-900 mb-4 sm:mb-6"
             >
-              How It Works - In 3 Easy Steps
+              <span className="text-blue-700">How It Works</span> - In <span className='text-yellow-500'>3 Easy Steps</span>
             </motion.h2>
             
             <motion.p
@@ -130,7 +130,7 @@ const HowItWorksSection = () => {
           </div>
 
           {/* Simple Timeline */}
-          <div className="relative mb-12 md:mb-16">
+          <div className="relative mb-8">
             {/* Desktop Timeline */}
             <div className="hidden lg:block">
               <div className="relative flex items-center justify-between px-4 lg:px-8 py-8 lg:py-12">

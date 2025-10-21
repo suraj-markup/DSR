@@ -173,7 +173,7 @@ const TestimonialsSection = () => {
   return (
     <section
       ref={ref}
-      className="relative py-16 md:py-20 lg:py-28 bg-gradient-to-b from-white to-gray-50 overflow-hidden"
+      className="relative py-16 bg-gradient-to-b from-white to-gray-50 overflow-hidden"
     >
       <div className="container mx-auto px-4">
         {/* Header */}
@@ -188,17 +188,21 @@ const TestimonialsSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="inline-flex items-center gap-2 px-3 py-2 sm:px-4 sm:py-2 bg-gradient-to-r from-accent/10 to-orange-100 rounded-full text-accent font-medium text-xs sm:text-sm mb-4 sm:mb-6"
+              className="inline-flex items-center gap-2 px-3 py-2 sm:px-4 sm:py-2 bg-gradient-to-r from-blue-100 to-orange-100 rounded-full text-blue-700 font-medium text-xs sm:text-sm mb-4 sm:mb-6"
             >
               <CheckCircle className="w-4 h-4" />
               Our Wall of Love
             </motion.div>
 
           {/* Main Heading */}
-          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-3 md:mb-4">
-            <span className="text-gray-900">How Teams Like Yours </span>
-            <span className="text-orange-300">Move Smarter</span>
+          <h2 className="font-display font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-gray-900 mb-4 sm:mb-6">
+            <span className="text-blue-700">How Teams Like Yours</span> <span className="text-yellow-500">Move Smarter</span>
           </h2>
+
+          {/* Subtitle */}
+          <p className="text-base sm:text-lg md:text-xl text-gray-700 mx-auto leading-relaxed px-4 sm:px-8 md:px-16 lg:px-24">
+            Don't just take our word for it - hear from our satisfied customers who have experienced our exceptional service.
+          </p>
         </motion.div>
 
         {/* Carousel Container */}

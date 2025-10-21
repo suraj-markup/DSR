@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
-import { Play } from 'lucide-react';
 
 const HeroSection = () => {
+
   // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -26,147 +26,47 @@ const HeroSection = () => {
     },
   };
 
-  const badgeVariants = {
-    hidden: { opacity: 0, scale: 0.8 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: {
-        duration: 0.4,
-        ease: "easeOut" as const,
-      },
-    },
-  };
-
 
   return (
-    <section className="relative min-h-[85vh] flex items-center overflow-hidden bg-gradient-to-br from-gray-50 to-white py-20 lg:py-0">
-     
-      {/* Responsive Layout */}
-      <div className="relative z-10 mx-auto">
-        <div className="flex flex-col lg:flex-row container gap-8 mx-auto items-center ">
-          
-          {/* LEFT COLUMN - Content */}
+    <section className="relative min-h-[65vh] flex items-center overflow-hidden">
+      {/* Background Image with Dark Overlay */}
+      <div className="absolute inset-0 z-0">
+        <div 
+          className="w-full h-full bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: 'url(/hero.png)',
+          }}
+        />
+        {/* Dark overlay for better text readability */}
+        <div className="absolute inset-0 bg-black/20"></div>
+      </div>
+
+      {/* Content */}
+      <div className="relative z-10 w-full">
+        <div className="container mx-auto px-4 py-20">
           <motion.div
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className=" max-w-2xl text-center lg:text-left mx-4 "
+            className="text-center max-w-5xl mx-auto"
           >
-            {/* Trust Badge */}
-            <motion.div
-              variants={badgeVariants}
-              className="inline-flex items-center gap-2 px-4 py-2 lg:px-5 lg:py-3 bg-white border border-gray-200 rounded-full text-gray-900 text-xs lg:text-sm font-semibold mb-6 lg:mb-8 shadow-lg"
-            >
-              <div className="w-2.5 h-2.5 bg-green-500 rounded-full animate-pulse shadow-lg shadow-green-500/50" />
-              Trusted by 5000+ Customers
-            </motion.div>
-
-            {/* Main Heading */}
+            {/* Main Headline */}
             <motion.h1
               variants={itemVariants}
-              className="font-display font-bold text-2xl sm:text-3xl md:text-3xl lg:text-5xl xl:text-6xl bg-gradient-to-r from-orange-300 via-accent to-orange-600 bg-clip-text text-transparent mb-2 lg:mb-4 "
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight w-full"
             >
-              Seamless Moving,
-              <br />
-              <span className="bg-gradient-to-r text-4xl sm:text-3xl md:text-3xl lg:text-4xl xl:text-5xl from-orange-300 via-accent to-orange-600 bg-clip-text text-transparent">
-                Stress-Free Solutions
-              </span>
+              Professional logistics and moving services that make your{' '}
+              <span className="text-yellow-500">relocation effortless</span>
             </motion.h1>
 
             {/* Sub-headline */}
             <motion.p
               variants={itemVariants}
-              className="text-sm sm:text-base md:text-lg text-gray-700 mb-6 lg:mb-8"
+              className="text-lg sm:text-xl md:text-2xl text-gray-200 mb-12 max-w-3xl mx-auto"
             >
-              Professional logistics and moving services that make your relocation effortless. 
               From residential moves to international shipping, we've got you covered.
             </motion.p>
-
-            {/* CTA Buttons */}
-            <motion.div
-              variants={itemVariants}
-              className="flex flex-col sm:flex-row gap-3 sm:gap-4 my-6 lg:my-8"
-            >
-              {/* Primary CTA */}
-              <motion.button
-                whileHover={{ 
-                  scale: 1.05,
-                  boxShadow: '0 0 30px rgba(247, 148, 29, 0.4)'
-                }}
-                whileTap={{ scale: 0.95 }}
-                className="group relative px-6 py-3 sm:px-8 sm:py-4 bg-gradient-to-r from-accent to-orange-500 text-white font-semibold rounded-full shadow-lg transition-all duration-300 text-sm sm:text-base mx-auto w-3/4 md:w-2/4 "
-              >
-                <span className="relative z-10">Get a Free Quote</span>
-              </motion.button>
-
-              {/* Secondary CTA */}
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="group flex items-center justify-center gap-2 sm:gap-3 px-6 py-3 sm:px-8 sm:py-4 border-2 border-gray-300 bg-white text-gray-900 font-semibold rounded-full hover:bg-gray-400 hover:text-white transition-all duration-300 text-sm sm:text-base mx-auto w-3/4 md:w-2/4"
-              >
-                <Play className="w-5 h-5 group-hover:scale-110 transition-transform duration-300 fill-current" />
-                Watch How It Works
-              </motion.button>
-            </motion.div>
-
-            {/* Trust Indicators */}
-            <motion.div
-              variants={itemVariants}
-              className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 lg:gap-6"
-            >
-              <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-full border border-gray-200 shadow-sm">
-                <div className="flex">
-                  {[...Array(5)].map((_, i) => (
-                    <span key={i} className="text-yellow-400 text-lg">⭐</span>
-                  ))}
-                </div>
-                <span className="text-sm font-semibold text-gray-900">4.9/5 from 1000+ reviews</span>
-              </div>
-              
-              <div className="hidden sm:block w-px h-8 bg-gray-300" />
-              
-              <div className="text-sm text-gray-700">
-                <span className="font-bold text-accent text-lg">10+</span> Years Experience
-              </div>
-              
-              <div className="hidden sm:block w-px h-8 bg-gray-300" />
-              
-              <div className="text-sm text-gray-700">
-                <span className="font-bold text-accent text-lg">98%</span> Satisfaction
-              </div>
-            </motion.div>
           </motion.div>
-
-          {/* RIGHT COLUMN - Video */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="relative w-full max-w-md mx-auto flex items-center justify-center lg:max-w-none lg:h-[500px] xl:h-[600px] lg:w-[700px] xl:w-[800px] order-2"
-          >
-            <div className="relative rounded-2xl lg:rounded-3xl overflow-hidden shadow-2xl border-2 lg:border-4 border-white lg:h-[400px] xl:h-[500px] lg:w-[500px] xl:w-[600px]">
-              <video
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="w-full h-full object-cover"
-              >
-                <source src="/three.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-              
-              {/* Video Overlay for Better Integration */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 pointer-events-none" />
-            </div>
-
-            {/* Decorative Elements Around Video */}
-            <div className="absolute -top-6 -right-6 w-24 h-24 bg-accent/20 rounded-full blur-2xl" />
-            <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-primary/20 rounded-full blur-2xl" />
-          </motion.div>
-
         </div>
       </div>
     </section>

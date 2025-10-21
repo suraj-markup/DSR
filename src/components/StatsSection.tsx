@@ -1,6 +1,7 @@
 import { motion, useMotionValue, animate } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { useEffect, useState } from 'react';
+import { TrendingUp } from 'lucide-react';
 
 interface StatCardProps {
   value: number;
@@ -109,10 +110,16 @@ const StatsSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-12 md:mb-16 lg:mb-20"
         >
-          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-3 md:mb-4">
-            Some counts that matter
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 px-3 py-2 sm:px-4 sm:py-2 bg-white/20 backdrop-blur-sm rounded-full text-white font-medium text-xs sm:text-sm mb-4 sm:mb-4">
+            <TrendingUp className="w-4 h-4" />
+            Our Achievements
+          </div>
+
+          <h2 className="font-display font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white mb-4 sm:mb-6">
+            Some Counts <span className="text-blue-200">That Matter</span>
           </h2>
-          <p className="text-base sm:text-lg md:text-xl text-white/90 mx-auto px-4">
+          <p className="text-base sm:text-lg md:text-xl text-white/90 mx-auto leading-relaxed px-4 sm:px-8 md:px-16 lg:px-24">
             Our achievement in the journey depicted in numbers
           </p>
         </motion.div>
