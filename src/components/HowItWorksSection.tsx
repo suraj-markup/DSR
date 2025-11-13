@@ -56,16 +56,19 @@ const HowItWorksSection = () => {
       icon: Clock,
       title: '24/7 Support',
       description: 'Round-the-clock customer service',
+      image: '/steps/support.jpg',
     },
     {
       icon: Shield,
       title: 'Fully Insured',
       description: 'Complete protection for your belongings',
+      image: '/steps/insurance.jpg',
     },
     {
       icon: Truck,
       title: 'Modern Fleet',
       description: 'Well-maintained vehicles and equipment',
+      image: '/steps/fleet.jpg',
     },
   ];
 
@@ -117,7 +120,7 @@ const HowItWorksSection = () => {
               variants={itemVariants}
               className="font-display font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-gray-900 mb-4 sm:mb-6"
             >
-              <span className="text-blue-700">How It Works</span> - In <span className='text-yellow-500'>3 Easy Steps</span>
+              <span className="text-blue-700">How It Works- In </span> <span className='text-yellow-500'>3 Easy Steps</span>
             </motion.h2>
             
             <motion.p
@@ -135,7 +138,7 @@ const HowItWorksSection = () => {
             <div className="hidden lg:block">
               <div className="relative flex items-center justify-between px-4 lg:px-8 py-8 lg:py-12">
                 {/* Connecting Line - positioned behind content */}
-                <div className="absolute top-20 lg:top-24 left-16 lg:left-20 right-16 lg:right-20 h-0.5 bg-gray-300 transform -translate-y-1/2 z-0" />
+                <div className="absolute top-20 lg:top-24 left-16 lg:left-20 right-16 lg:right-20 h-0.5 bg-orange-300 transform -translate-y-1/2 z-0" />
                 
                 {/* Timeline Steps */}
                 {steps.map((step, index) => {
@@ -150,14 +153,14 @@ const HowItWorksSection = () => {
                       transition={{ duration: 0.6, delay: index * 0.2 }}
                     >
                       {/* Step Number Circle */}
-                      <div className="relative z-20 flex items-center justify-center w-14 h-14 lg:w-16 lg:h-16 rounded-full mb-4 lg:mb-6 border-2 border-gray-600 bg-white">
+                      <div className="relative z-20 flex items-center justify-center w-14 h-14 lg:w-16 lg:h-16 rounded-full mb-4 lg:mb-6 border-2 border-gray-500 bg-white">
                         <span className="text-lg lg:text-xl font-bold text-gray-600">
                           {index + 1}
                         </span>
                         
                         {/* Icon overlay */}
-                        <div className="absolute -top-1 -right-1 w-5 h-5 lg:w-6 lg:h-6 bg-white rounded-full border border-gray-300 flex items-center justify-center">
-                          <Icon className="w-2.5 lg:w-3 h-2.5 lg:h-3 text-gray-500" />
+                        <div className="absolute -top-2 -right-2 w-5 h-5 lg:w-8 lg:h-8 bg-white rounded-full border border-yellow-600 flex items-center justify-center">
+                          <Icon className="w-3 lg:w-5 h-3 lg:h-5 text-blue-500" />
                         </div>
                       </div>
 
@@ -197,8 +200,8 @@ const HowItWorksSection = () => {
                       </span>
                       
                       {/* Icon overlay */}
-                      <div className="absolute -top-1 -right-1 w-4 h-4 sm:w-5 sm:h-5 bg-white rounded-full border border-gray-300 flex items-center justify-center">
-                        <Icon className="w-2 h-2 sm:w-2.5 sm:h-2.5 text-gray-500" />
+                      <div className="absolute -top-1 -right-1 w-5 h-5 sm:w-6 sm:h-6 bg-white rounded-full border border-yellow-300 flex items-center justify-center">
+                        <Icon className="w-3 h-3 sm:w-3 sm:h-3 text-blue-500" />
                       </div>
                     </div>
 
@@ -230,17 +233,31 @@ const HowItWorksSection = () => {
                 <motion.div
                   key={index}
                   whileHover={{ scale: 1.05, y: -5 }}
-                  className="bg-white rounded-xl p-4 sm:p-6 text-center border border-gray-200 hover:shadow-lg transition-all duration-300"
+                  className="relative overflow-hidden rounded-xl border border-gray-200 hover:shadow-lg transition-all duration-300 bg-white h-[400px] sm:h-[450px] md:h-[500px]"
                 >
-                  <div className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-r from-primary/10 to-secondary/10 mb-3 sm:mb-4">
-                    <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
+                  {/* Background Image */}
+                  <div className="absolute inset-0">
+                    <img
+                      src={feature.image}
+                      alt={feature.title}
+                      className="w-full h-full object-cover"
+                    />
+                    {/* Fade-out Gradient Overlay - stronger at bottom */}
+                    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white/90" />
                   </div>
-                  <h4 className="font-semibold text-sm sm:text-base text-gray-900 mb-2">
-                    {feature.title}
-                  </h4>
-                  <p className="text-xs sm:text-sm text-gray-700">
-                    {feature.description}
-                  </p>
+                  
+                  {/* Content - Positioned at bottom */}
+                  <div className="absolute bottom-0 left-0 right-0 z-10 p-4 sm:p-6 text-center">
+                    <div className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-r from-primary/10 to-secondary/10 mb-3 sm:mb-4 backdrop-blur-sm">
+                      <Icon className="w-5 h-5 sm:w-8 sm:h-8 text-primary" />
+                    </div>
+                    <h4 className="font-semibold text-base sm:text-xl text-gray-900 mb-2">
+                      {feature.title}
+                    </h4>
+                    <p className="text-sm sm:text-base text-gray-700">
+                      {feature.description}
+                    </p>
+                  </div>
                 </motion.div>
               );
             })}

@@ -119,12 +119,12 @@ const Header = () => {
                 />
                 <div className="ml-4 font-bold">
                   <div className="text-base">
-                    <span className="text-black">Seamless</span>{' '}
-                    <span className="text-yellow-500">Moving,</span>
+                    <span className="text-black">From here</span>{' '}
+                    <span className="text-yellow-500">to</span>
                   </div>
                   <div className="text-base">
-                    <span className="text-yellow-500"> Stress-Free </span>{' '}
-                    <span className="text-black">Solution</span>
+                    <span className="text-yellow-500">there,</span>{' '}
+                    <span className="text-black">with care.</span>
                   </div>
                 </div>
               </motion.div>
