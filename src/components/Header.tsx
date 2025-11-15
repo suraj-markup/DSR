@@ -118,13 +118,13 @@ const Header = () => {
                   className="h-24 w-48 rounded-lg"
                 />
                 <div className="ml-4 font-bold">
-                  <div className="text-base">
-                    <span className="text-black">From here</span>{' '}
-                    <span className="text-yellow-500">to</span>
+                  <div className="text-sm md:text-base text-orange-400">
+                    <span >"We Move </span>{' '}
+                    <span className='text-orange-500'>Families,</span>
                   </div>
-                  <div className="text-base">
-                    <span className="text-yellow-500">there,</span>{' '}
-                    <span className="text-black">with care.</span>
+                  <div className="text-sm md:text-base text-orange-400">
+                    <span> Not Just</span>{' '}
+                    <span className='text-orange-500'>Furniture"</span>
                   </div>
                 </div>
               </motion.div>
