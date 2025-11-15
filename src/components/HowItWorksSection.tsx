@@ -194,7 +194,7 @@ const HowItWorksSection = () => {
                     transition={{ duration: 0.6, delay: index * 0.2 }}
                   >
                     {/* Step Number Circle */}
-                    <div className="flex-shrink-0 flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-gray-600 bg-blue-500 relative">
+                    <div className="flex-shrink-0 flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full border-1 border-gray-600 bg-white relative">
                       <span className="text-base sm:text-lg font-bold text-gray-600">
                         {index + 1}
                       </span>

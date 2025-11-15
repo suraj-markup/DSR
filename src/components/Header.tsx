@@ -167,19 +167,19 @@ const Header = () => {
               </div>
 
               {/* Mobile Menu Button */}
-              <motion.button
-                whileTap={{ scale: 0.9 }}
+              <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="lg:hidden p-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors duration-200 mobile-menu-button touch-manipulation"
+                className="lg:hidden p-3 rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors duration-200 mobile-menu-button active:bg-gray-300 flex items-center justify-center"
                 aria-label={isMenuOpen ? "Close menu" : "Open menu"}
                 aria-expanded={isMenuOpen}
+                style={{ minWidth: '44px', minHeight: '44px' }}
               >
                 {isMenuOpen ? (
-                  <X className="w-5 h-5 text-gray-600" />
+                  <X className="w-6 h-6 text-gray-600" />
                 ) : (
-                  <Menu className="w-5 h-5 text-gray-600" />
+                  <Menu className="w-6 h-6 text-gray-600" />
                 )}
-              </motion.button>
+              </button>
             </div>
           </div>
         </div>
@@ -245,20 +245,6 @@ const Header = () => {
                 </motion.button>
               ))}
 
-              {/* Mobile CTA */}
-              <motion.button
-                whileTap={{ scale: 0.95 }}
-                onClick={() => handleNavigation('#quote-form', 'hash')}
-                className="mt-4 py-3 px-6 bg-blue-800 text-white font-semibold rounded-lg shadow-lg text-center text-sm touch-manipulation"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{
-                  opacity: isMenuOpen ? 1 : 0,
-                  y: isMenuOpen ? 0 : 20
-                }}
-                transition={{ delay: 0.3 }}
-              >
-                Get Free Quote
-              </motion.button>
             </nav>
           </div>
         </motion.div>
