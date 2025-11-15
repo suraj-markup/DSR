@@ -86,7 +86,7 @@ const ContactSection = () => {
       icon: MapPin,
       label: 'Address',
       value: 'Shop No:1, Plot No: 6-2/141/142, Journalist Colony, Gowlidoddy, Gachibowli, HYD - 500032',
-      link: 'https://maps.google.com',
+      link: "https://www.google.com/maps/place/17%C2%B025'54.0%22N+78%C2%B018'29.0%22E/@17.4314017,78.3080241,18z/data=!4m4!3m3!8m2!3d17.4316667!4d78.3080556?hl=en&entry=ttu&g_ep=EgoyMDI1MTExMi4wIKXMDSoASAFQAw%3D%3D",
     },
     {
       icon: Clock,
