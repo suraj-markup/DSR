@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Clock, Send } from 'lucide-react';
 import { useInView } from 'react-intersection-observer';
 import { useState } from 'react';
+import emailjs from '@emailjs/browser';
 
 const ContactSection = () => {
   const [ref, inView] = useInView({
@@ -23,21 +24,42 @@ const ContactSection = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    console.log('Form submitted:', formData);
-    alert('Thank you for your inquiry! We will get back to you soon.');
-    
-    // Reset form
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      service: '',
-      message: '',
-    });
-    setIsSubmitting(false);
+    try {
+      // EmailJS service configuration
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID || 'YOUR_SERVICE_ID';
+      const templateId = import.meta.env.VITE_EMAILJS_CONTACT_TEMPLATE_ID || 'YOUR_TEMPLATE_ID';
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'YOUR_PUBLIC_KEY';
+
+      await emailjs.send(
+        serviceId,
+        templateId,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          from_phone: formData.phone,
+          service_type: formData.service,
+          message: formData.message,
+          to_email: 'info@dsrlogistics.com', // Your email
+        },
+        publicKey
+      );
+
+      alert('Thank you for your inquiry! We will get back to you soon.');
+      
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        service: '',
+        message: '',
+      });
+    } catch (error) {
+      console.error('Error sending email:', error);
+      alert('There was an error sending your message. Please try again or contact us directly.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -51,19 +73,19 @@ const ContactSection = () => {
     {
       icon: Phone,
       label: 'Phone',
-      value: '+1 (555) 123-4567',
-      link: 'tel:+15551234567',
+      value: '+91 9251129800 / +91 9251139800',
+      link: 'tel:+919251129800',
     },
     {
       icon: Mail,
       label: 'Email',
-      value: 'info@dsrlogistics.com',
-      link: 'mailto:info@dsrlogistics.com',
+      value: 'dsrlogisticspackerandmovers@gmail.com',
+      link: 'mailto:dsrlogisticspackerandmovers@gmail.com',
     },
     {
       icon: MapPin,
       label: 'Address',
-      value: '123 Logistics Ave, Suite 500, New York, NY 10001',
+      value: 'Shop No:1, Plot No: 6-2/141/142, Journalist Colony, Gowlidoddy, Gachibowli, HYD - 500032',
       link: 'https://maps.google.com',
     },
     {
@@ -170,7 +192,7 @@ const ContactSection = () => {
             {/* CTA Buttons */}
             <div className="flex flex-wrap gap-4 pt-4">
               <motion.a
-                href="tel:+15551234567"
+                href="tel:+919251129800"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="px-6 py-3 bg-white border-2 border-orange-300 text-orange-400 hover:text-orange-600 hover:border-orange-500  rounded-full font-semibold transition-all duration-300 flex items-center gap-2"

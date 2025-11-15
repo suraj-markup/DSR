@@ -136,7 +136,7 @@ const Header = () => {
                   <Phone className="w-8 h-8 text-black" />
                   <div>
                     <div className="text-black text-sm">Call us</div>
-                    <div className="text-blue-700 text-sm font-medium">+1 (555) 123-4567</div>
+                    <div className="text-blue-700 text-sm font-medium">+91 9251129800 <br/>+91 9251139800</div>
                   </div>
                 </div>
 
@@ -148,7 +148,7 @@ const Header = () => {
                   <Mail className="w-8 h-8 text-black" />
                   <div>
                     <div className="text-black text-sm">Email</div>
-                    <div className="text-blue-700 text-sm font-medium">info@dsrlogistics.com</div>
+                    <div className="text-blue-700 text-sm font-medium">dsrlogisticspackerandmovers@gmail.com</div>
                   </div>
                 </div>
 
@@ -159,7 +159,7 @@ const Header = () => {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  onClick={() => handleNavigation('#contact', 'hash')}
+                  onClick={() => handleNavigation('#quote-form', 'hash')}
                   className="bg-blue-800 hover:bg-blue-900 text-white font-semibold px-6 py-3 rounded-lg transition-colors duration-200"
                 >
                   Get Free Quote
@@ -248,7 +248,7 @@ const Header = () => {
               {/* Mobile CTA */}
               <motion.button
                 whileTap={{ scale: 0.95 }}
-                onClick={() => handleNavigation('#contact', 'hash')}
+                onClick={() => handleNavigation('#quote-form', 'hash')}
                 className="mt-4 py-3 px-6 bg-blue-800 text-white font-semibold rounded-lg shadow-lg text-center text-sm touch-manipulation"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{

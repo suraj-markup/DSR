@@ -159,8 +159,8 @@ const HowItWorksSection = () => {
                         </span>
                         
                         {/* Icon overlay */}
-                        <div className="absolute -top-2 -right-2 w-5 h-5 lg:w-8 lg:h-8 bg-white rounded-full border border-yellow-600 flex items-center justify-center">
-                          <Icon className="w-3 lg:w-5 h-3 lg:h-5 text-blue-500" />
+                        <div className="absolute -top-2 -right-2 w-5 h-5 lg:w-8 lg:h-8 bg-blue-500 rounded-full border border-blue-600 flex items-center justify-center">
+                          <Icon className="w-3 lg:w-5 h-3 lg:h-5 text-white" />
                         </div>
                       </div>
 
@@ -194,14 +194,14 @@ const HowItWorksSection = () => {
                     transition={{ duration: 0.6, delay: index * 0.2 }}
                   >
                     {/* Step Number Circle */}
-                    <div className="flex-shrink-0 flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-gray-600 bg-white relative">
+                    <div className="flex-shrink-0 flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-gray-600 bg-blue-500 relative">
                       <span className="text-base sm:text-lg font-bold text-gray-600">
                         {index + 1}
                       </span>
                       
                       {/* Icon overlay */}
-                      <div className="absolute -top-1 -right-1 w-5 h-5 sm:w-6 sm:h-6 bg-white rounded-full border border-yellow-300 flex items-center justify-center">
-                        <Icon className="w-3 h-3 sm:w-3 sm:h-3 text-blue-500" />
+                      <div className="absolute -top-1 -right-1 w-5 h-5 sm:w-6 sm:h-6 bg-blue-500 rounded-full border border-blue-600 flex items-center justify-center">
+                        <Icon className="w-3 h-3 sm:w-3 sm:h-3 text-white" />
                       </div>
                     </div>
 
